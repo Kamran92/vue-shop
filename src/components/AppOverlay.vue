@@ -18,7 +18,7 @@ if (body) {
 }
 </script>
 
-<style>
+<style scoped>
 .overlay {
   position: fixed;
   top: 0;
