@@ -25,5 +25,22 @@ yarn test:unit
 yarn lint
 ```
 
+### Fixes style
+
+```
+yarn lint:css
+
+Добавить в vscode/settings.json
+
+  {
+    "stylelint.validate": ["vue", "css"],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+    }
+  }
+
+```
+
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
