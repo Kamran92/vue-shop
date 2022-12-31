@@ -59,9 +59,9 @@ const categories: Ref<ICategories[]> = ref([]);
 }
 
 .categories__list {
-  display: grid;
-  grid-gap: 22px;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
 }
 
 .categories__item {
