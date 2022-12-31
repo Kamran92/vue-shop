@@ -13,9 +13,11 @@ module.exports = {
     ecmaVersion: 2020,
     ecmaFeatures: { jsx: false },
   },
+  plugins: ["simple-import-sort"],
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "simple-import-sort/imports": "error",
   },
   overrides: [
     {
