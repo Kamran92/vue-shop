@@ -5,6 +5,19 @@
 yarn install
 ```
 
+### VScode
+```
+  Добавить в vscode/settings.json
+
+  {
+    "stylelint.validate": ["vue", "css"],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true,
+      "source.fixAll": true
+    }
+  }
+```
+
 ### Compiles and hot-reloads for development
 ```
 yarn serve
@@ -26,19 +39,8 @@ yarn lint
 ```
 
 ### Fixes style
-
 ```
 yarn lint:css
-
-Добавить в vscode/settings.json
-
-  {
-    "stylelint.validate": ["vue", "css"],
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": true
-    }
-  }
-
 ```
 
 ### Customize configuration
