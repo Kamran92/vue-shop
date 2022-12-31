@@ -50,17 +50,18 @@ const categories: Ref<ICategories[]> = ref([]);
 
 <style scoped>
 .categories__title {
+  margin-bottom: 20px;
+
+  color: #272727;
   font-weight: 500;
   font-size: 44px;
   line-height: 44px;
-  color: #272727;
-  margin-bottom: 20px;
 }
 
 .categories__list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 22px;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .categories__item {
@@ -68,19 +69,21 @@ const categories: Ref<ICategories[]> = ref([]);
 }
 
 .categories__link {
+  position: relative;
+
   display: block;
   width: 271px;
   height: 152px;
   padding: 20px;
-  position: relative;
-  background-position: right;
+
   background-repeat: no-repeat;
+  background-position: right;
 }
 
 .categories__category-title {
-  font-style: normal;
   font-weight: 500;
   font-size: 24px;
+  font-style: normal;
   line-height: 28px;
 }
 </style>

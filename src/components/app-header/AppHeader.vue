@@ -25,6 +25,7 @@ const toggleOpenLocalities = (): void => {
 <style scoped>
 .header {
   padding: 25px 0px;
+
   background: #ffffff;
   box-shadow: 0px 2px 4px rgba(39, 39, 39, 0.1);
 }
@@ -32,20 +33,22 @@ const toggleOpenLocalities = (): void => {
 .header__btn {
   display: flex;
   align-items: center;
+
   cursor: pointer;
 }
 
 .header__icon {
   margin-right: 8px;
+
   fill: #dadada;
 }
 
 .header__title {
-  font-size: 15px;
+  color: #272727;
   font-weight: 500;
+  font-size: 15px;
   line-height: 24px;
   letter-spacing: 0px;
-  color: #272727;
 }
 
 .mb-35 {

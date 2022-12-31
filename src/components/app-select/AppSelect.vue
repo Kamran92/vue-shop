@@ -94,21 +94,23 @@ watch(findValue, (newValue: string) => {
 <style scoped>
 .select {
   position: relative;
+
   display: inline-block;
 }
 
 .select__input {
   width: 100%;
   padding: 12px 40px 12px 12px;
+
   border: 1px solid rgba(151, 151, 151, 0.5);
   border-radius: 5px;
 }
 
 .select__input::placeholder {
+  color: #979797;
   font-weight: 300;
   font-size: 18px;
   line-height: 23px;
-  color: #979797;
 }
 
 .select__input--focus,
@@ -122,31 +124,37 @@ watch(findValue, (newValue: string) => {
 
 .select__input-btn {
   position: absolute;
-  right: 0px;
   top: 0px;
+  right: 0px;
+
   padding: 16px 14px;
+
   cursor: pointer;
 }
 .select__input-icon {
-  fill: #979797;
   width: 12px;
   height: 12px;
+
+  fill: #979797;
 }
 
 .select__list {
-  display: grid;
-  width: 100%;
-  padding: 12px;
   position: absolute;
   top: 36px;
+
+  display: grid;
+  grid-gap: 8px;
+  width: 100%;
+  padding: 12px;
+
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+
   background: #ffffff;
   border: 1px solid #272727;
   border-top: none;
   border-radius: 0px 0px 5px 5px;
-  grid-gap: 8px;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 24px;
 }
 
 .select__item {
@@ -158,8 +166,10 @@ watch(findValue, (newValue: string) => {
 }
 
 .select__item:nth-child(1) {
-  border-top: 2px solid rgba(151, 151, 151, 0.3);
   padding-top: 12px;
+
   color: #979797;
+
+  border-top: 2px solid rgba(151, 151, 151, 0.3);
 }
 </style>
