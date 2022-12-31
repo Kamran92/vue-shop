@@ -11,9 +11,11 @@
 </template>
 
 <script lang="ts" setup>
-import AppCities from "@/components/app-cities/AppCities.vue";
-import locationIcon from "./icon/locationIcon.vue";
 import { ref } from "vue";
+
+import AppCities from "@/components/app-cities/AppCities.vue";
+
+import locationIcon from "./icon/locationIcon.vue";
 
 const isOpenLocalities = ref<boolean>(false);
 

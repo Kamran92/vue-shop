@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import axios from "axios";
-import { ref, Ref } from "vue";
+import { Ref, ref } from "vue";
 
 interface ICategories {
   slug: string;

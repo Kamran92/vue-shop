@@ -32,10 +32,11 @@
 </template>
 
 <script lang="ts" setup>
-import crossIcon from "./icon/crossIcon.vue";
+import { computed, Ref, ref, watch } from "vue";
+
 import debounce from "@/utils/debounce";
-import { ref, watch, computed } from "vue";
-import type { Ref } from "vue";
+
+import crossIcon from "./icon/crossIcon.vue";
 
 const props = defineProps<{
   modelValue: string;
