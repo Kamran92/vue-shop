@@ -9,7 +9,7 @@
       >
         <router-link
           class="categories__link"
-          :to="`/${slug}`"
+          :to="`/category/${slug}`"
           :style="`background-image: url('${image}')`"
         >
           <h3
