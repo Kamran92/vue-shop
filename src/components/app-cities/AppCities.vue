@@ -1,24 +1,27 @@
 <template>
   <app-overlay>
     <form class="localities__form" @submit.prevent="">
-      <label>
-        <span class="localities__label"> Выбор населённого пункта: </span>
-        <app-select
-          v-model="findCity"
-          :get-list="getCities"
-          class="localities__select"
-        />
+      <div class="localities__wrap">
+        <label class="localities__label">
+          <span class="localities__span"> Выбор населённого пункта: </span>
+          <app-select
+            v-model="findCity"
+            :get-list="getCities"
+            class="localities__select"
+          />
+        </label>
         <button class="localities__btn-submit" type="button">
           Подтвердить
         </button>
-        <button
-          class="localities__btn-close"
-          type="button"
-          @click="$emit('close')"
-        >
-          <close-icon />
-        </button>
-      </label>
+      </div>
+
+      <button
+        class="localities__btn-close"
+        type="button"
+        @click="$emit('close')"
+      >
+        <close-icon />
+      </button>
     </form>
   </app-overlay>
 </template>
@@ -55,21 +58,33 @@ const getCities = async <T, U>(term: T): Promise<U[]> => {
   box-shadow: 0px 2px 10px rgba(151, 151, 151, 0.2);
 }
 
+.localities__wrap {
+  display: flex;
+  align-items: flex-end;
+}
+
+@media screen and (max-width: 768px) {
+  .localities__wrap {
+    display: block;
+  }
+}
+
 .localities__label {
-  display: block;
+  margin-right: 17px;
+}
 
-  width: 540px;
-  margin-bottom: 12px;
-
+.localities__span {
   color: #272727;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
+
+  cursor: pointer;
 }
 
 .localities__select {
-  width: 540px;
-  margin-right: 17px;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .localities__btn-submit {
@@ -80,10 +95,20 @@ const getCities = async <T, U>(term: T): Promise<U[]> => {
   font-size: 16px;
   line-height: 21px;
   letter-spacing: 1.75px;
+  text-align: center;
   text-transform: uppercase;
 
   border: 2px solid rgba(151, 151, 151, 0.3);
   border-radius: 24px;
+
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .localities__btn-submit {
+    width: 100%;
+    margin-top: 17px;
+  }
 }
 
 .localities__btn-close {
