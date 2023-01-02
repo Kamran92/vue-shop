@@ -1,29 +1,34 @@
 <template>
   <div class="select">
-    <div class="select__input-wrap">
+    <div class="select__wrap">
       <input
+        ref="input"
         v-model="findValue"
-        :class="{ 'select__input--focus': isList }"
+        :class="{
+          'select__input--focus': isList || isFindValueMoreThreeCharacters,
+        }"
         class="select__input"
         placeholder="Например, Санкт-петербург"
         type="text"
+        @focus="isFocusInput = true"
+        @blur="isFocusInput = false"
       />
-      <button class="select__input-btn" @click="setCity('')">
+      <button class="select__input-btn" @click="setCity({ id: 0, label: '' })">
         <cross-icon class="select__input-icon" />
       </button>
     </div>
     <ul
-      v-if="isFindValueMoreThreeCharacters && !selectedValue"
+      v-if="isFindValueMoreThreeCharacters && !selectedValue.label"
       class="select__list"
     >
-      <li v-if="isLoading">Загрузка...</li>
-      <li v-else-if="!isList">Ничего не найдено...</li>
+      <li v-if="isLoading" class="select__item">Загрузка...</li>
+      <li v-else-if="!isList" class="select__item">Ничего не найдено...</li>
       <li
         v-for="item in list"
         v-else
         :key="item.id"
         class="select__item"
-        @click="setCity(item.city)"
+        @click="setCity({ id: item.id, label: item.city })"
       >
         {{ item.label }}
       </li>
@@ -38,13 +43,17 @@ import debounce from "@/utils/debounce";
 
 import crossIcon from "./icon/crossIcon.vue";
 
+interface IModeValue {
+  id: number;
+  label: string;
+}
 const props = defineProps<{
-  modelValue: string;
+  modelValue: IModeValue;
   getList: <T, U>(value: T) => Promise<Array<U>>;
 }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: string): void;
+  (e: "update:modelValue", value: IModeValue): void;
 }>();
 
 interface IList {
@@ -55,12 +64,14 @@ interface IList {
 const list: Ref<IList[]> = ref([]);
 const findValue = ref<string>("");
 const isLoading = ref<boolean>(false);
+const isFocusInput = ref(false);
 
 const isList = computed<boolean>(() => !!list.value.length);
 const isFindValueMoreThreeCharacters = computed<boolean>(
   () => findValue.value.length > 3
 );
-const selectedValue = computed<string>({
+
+const selectedValue = computed<IModeValue>({
   get: () => props.modelValue,
   set: (value) => emit("update:modelValue", value),
 });
@@ -75,19 +86,19 @@ const getList = async <T>(value: T): Promise<void> => {
   }
 };
 
-const setCity = (value: string): void => {
-  findValue.value = value;
-  selectedValue.value = value;
+const setCity = (city: IModeValue): void => {
+  findValue.value = city.label;
+  selectedValue.value = city;
   list.value = [];
 };
 
 const debounceGetCities = debounce(getList);
 watch(findValue, (newValue: string) => {
   if (!isFindValueMoreThreeCharacters.value) return;
-  if (newValue === selectedValue.value) return;
+  if (newValue === selectedValue.value.label) return;
 
   isLoading.value = true;
-  selectedValue.value = "";
+  selectedValue.value = { id: 0, label: "" };
   debounceGetCities(newValue);
 });
 </script>
@@ -119,7 +130,7 @@ watch(findValue, (newValue: string) => {
   border: 1px solid #272727;
 }
 
-.select__input-wrap {
+.select__wrap {
   position: relative;
 }
 

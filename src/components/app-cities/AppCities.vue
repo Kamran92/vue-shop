@@ -10,7 +10,12 @@
             class="localities__select"
           />
         </label>
-        <button class="localities__btn-submit" type="button">
+        <button
+          class="localities__btn-submit"
+          type="button"
+          :disabled="findCity.label === ''"
+          @click="closeForm"
+        >
           Подтвердить
         </button>
       </div>
@@ -28,22 +33,34 @@
 
 <script lang="ts" setup>
 import axios from "axios";
-import { ref } from "vue";
+import { Ref, ref } from "vue";
 
 import AppSelect from "@/components/app-select/AppSelect.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
+import useCityIdStore from "@/stores/cityId";
 
 import closeIcon from "./icon/crossIcon.vue";
 
-defineEmits<{ (e: "close"): void }>();
+const emit = defineEmits<{ (e: "close"): void }>();
 
-const findCity = ref<string>("");
+const { addCityId } = useCityIdStore();
+
+interface IFindCity {
+  id: number;
+  label: string;
+}
+const findCity: Ref<IFindCity> = ref({ id: 0, label: "" });
 
 const getCities = async <T, U>(term: T): Promise<U[]> => {
   const URL = "https://nlstar.com/api/catalog3/v1/city/";
   const params = { country: "ru", term };
   const { data } = await axios.get(URL, { params });
   return data.data.slice(0, 5);
+};
+
+const closeForm = () => {
+  addCityId(findCity.value);
+  emit("close");
 };
 </script>
 

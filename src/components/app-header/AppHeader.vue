@@ -3,7 +3,7 @@
     <div class="container">
       <button class="header__btn" @click="toggleOpenLocalities">
         <location-icon class="header__icon" />
-        <span class="header__title"> Новосибирск </span>
+        <span class="header__title"> {{ city.label }} </span>
       </button>
     </div>
     <app-cities v-if="isOpenLocalities" @close="toggleOpenLocalities" />
@@ -11,11 +11,16 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
 import AppCities from "@/components/app-cities/AppCities.vue";
+import useCityIdStore from "@/stores/cityId";
 
 import locationIcon from "./icon/locationIcon.vue";
+
+const cityIdStore = useCityIdStore();
+const { city } = storeToRefs(cityIdStore);
 
 const isOpenLocalities = ref<boolean>(false);
 

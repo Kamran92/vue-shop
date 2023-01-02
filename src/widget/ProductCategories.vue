@@ -1,7 +1,9 @@
 <template>
   <section class="container categories">
     <h2 class="categories__title">Категории товаров</h2>
-    <ul class="categories__list">
+    <div v-if="isLoading">Загрузка...</div>
+    <div v-else-if="isError">Произошла ошибка...</div>
+    <ul v-else class="categories__list">
       <li
         v-for="({ slug, image, text_color, name }, index) in categories"
         :key="index"
@@ -26,7 +28,12 @@
 
 <script lang="ts" setup>
 import axios from "axios";
-import { Ref, ref } from "vue";
+import { storeToRefs } from "pinia";
+import { Ref, ref, watch } from "vue";
+
+import useCityIdStore from "@/stores/cityId";
+
+const { city } = storeToRefs(useCityIdStore());
 
 interface ICategories {
   slug: string;
@@ -35,17 +42,27 @@ interface ICategories {
   name: string;
 }
 const categories: Ref<ICategories[]> = ref([]);
+const isError = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 
-(async () => {
+const getCatalogs = async () => {
   try {
-    const { data } = await axios.get<{ tags: ICategories[] }>(
-      "https://nlstar.com/ru/api/catalog3/v1/menutags/"
-    );
+    isLoading.value = true;
+    const URL = "https://nlstar.com/ru/api/catalog3/v1/menutags/";
+    const params = { city_id: city.value.id };
+    const { data } = await axios.get<{ tags: ICategories[] }>(URL, { params });
     categories.value = data.tags;
   } catch (error) {
     console.error(error);
+    isError.value = true;
+  } finally {
+    isLoading.value = false;
   }
-})();
+};
+
+getCatalogs();
+
+watch(city, getCatalogs);
 </script>
 
 <style scoped>
