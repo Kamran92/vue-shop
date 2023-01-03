@@ -5,7 +5,7 @@
     <div v-else-if="isError">Произошла ошибка...</div>
     <ul v-else class="categories__list">
       <li
-        v-for="({ slug, image, text_color, name }, index) in categories"
+        v-for="({ slug, image, text_color, name }, index) in storeCategories"
         :key="index"
         class="categories__item"
       >
@@ -27,31 +27,24 @@
 </template>
 
 <script lang="ts" setup>
-import axios from "axios";
 import { storeToRefs } from "pinia";
-import { Ref, ref, watch } from "vue";
+import { ref, watch } from "vue";
 
+import useCategoriesStore from "@/stores/categories";
 import useCityIdStore from "@/stores/cityId";
 
 const { city } = storeToRefs(useCityIdStore());
+const categoriesStore = useCategoriesStore();
+const { storeCategories } = storeToRefs(categoriesStore);
+const { storeGetCategories } = categoriesStore;
 
-interface ICategories {
-  slug: string;
-  image: string;
-  text_color: string;
-  name: string;
-}
-const categories: Ref<ICategories[]> = ref([]);
 const isError = ref<boolean>(false);
 const isLoading = ref<boolean>(false);
 
-const getCatalogs = async () => {
+const getCategories = async (): Promise<void> => {
   try {
     isLoading.value = true;
-    const URL = "https://nlstar.com/ru/api/catalog3/v1/menutags/";
-    const params = { city_id: city.value.id };
-    const { data } = await axios.get<{ tags: ICategories[] }>(URL, { params });
-    categories.value = data.tags;
+    await storeGetCategories();
   } catch (error) {
     console.error(error);
     isError.value = true;
@@ -59,10 +52,9 @@ const getCatalogs = async () => {
     isLoading.value = false;
   }
 };
+getCategories();
 
-getCatalogs();
-
-watch(city, getCatalogs);
+watch(city, getCategories);
 </script>
 
 <style scoped>
