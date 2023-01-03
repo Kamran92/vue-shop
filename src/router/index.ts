@@ -8,6 +8,15 @@ const routes: Array<RouteRecordRaw> = [
     name: "home",
     component: HomeView,
   },
+  {
+    path: "/category/:name",
+    name: "category",
+    component: () => {
+      return import(
+        /* webpackChunkName: "category" */ "@/views/CategoryView.vue"
+      );
+    },
+  },
 ];
 
 const router = createRouter({
