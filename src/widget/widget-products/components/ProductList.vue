@@ -4,7 +4,7 @@ import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
-import AppContainer from "@/components/AppContainer.vue";
+import AppWidgetContainer from "@/components/AppWidgetContainer.vue";
 import useCityIdStore from "@/stores/cityId";
 import ProductCard from "@/widget/widget-products/components/ProductCard.vue";
 
@@ -40,13 +40,13 @@ watch(() => props.activeFilter, getProducts, { immediate: true });
 </script>
 
 <template>
-  <app-container :is-loading="isLoading" :is-error="isError">
+  <app-widget-container :is-loading="isLoading" :is-error="isError">
     <ul class="list">
       <li v-for="(product, index) in products" :key="index" class="list__item">
         <product-card :product="product" />
       </li>
     </ul>
-  </app-container>
+  </app-widget-container>
 </template>
 
 <style scoped>
