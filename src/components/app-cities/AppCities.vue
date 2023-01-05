@@ -33,7 +33,7 @@
 
 <script lang="ts" setup>
 import axios from "axios";
-import { Ref, ref } from "vue";
+import { ref } from "vue";
 
 import AppSelect from "@/components/app-select/AppSelect.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
@@ -45,11 +45,7 @@ const emit = defineEmits<{ (e: "close"): void }>();
 
 const { addCityId } = useCityIdStore();
 
-interface IFindCity {
-  id: number;
-  label: string;
-}
-const findCity: Ref<IFindCity> = ref({ id: 0, label: "" });
+const findCity = ref({ id: 0, label: "" });
 
 const getCities = async <T, U>(term: T): Promise<U[]> => {
   const URL = "https://nlstar.com/api/catalog3/v1/city/";
