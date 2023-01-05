@@ -1,20 +1,13 @@
 import { defineStore } from "pinia";
-import { Ref, ref } from "vue";
+import { ref } from "vue";
 
 export default defineStore("cityId", () => {
-  interface ICity {
-    id: number;
-    label: string;
-  }
+  const city = ref({ id: 1, label: "Новосибирск" });
 
-  const city: Ref<ICity> = ref({ id: 1, label: "Новосибирск" });
-
-  const addCityId = (value: ICity): void => {
+  type TCity = typeof city.value;
+  const addCityId = (value: TCity): void => {
     city.value = value;
   };
 
-  return {
-    city,
-    addCityId,
-  };
+  return { city, addCityId };
 });
