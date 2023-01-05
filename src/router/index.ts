@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
+import CategoryView from "@/views/CategoryView.vue";
 import HomeView from "@/views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -9,13 +10,9 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/category/:name",
+    path: "/category/:categorySlug",
     name: "category",
-    component: () => {
-      return import(
-        /* webpackChunkName: "category" */ "@/views/CategoryView.vue"
-      );
-    },
+    component: CategoryView,
   },
 ];
 
