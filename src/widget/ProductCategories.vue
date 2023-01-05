@@ -1,5 +1,11 @@
+<script lang="ts" setup>
+import useCategories from "@/mixins/useCategories";
+
+const { storeCategories, isLoading, isError } = useCategories();
+</script>
+
 <template>
-  <section class="container categories">
+  <article class="container categories">
     <h2 class="categories__title">Категории товаров</h2>
     <div v-if="isLoading">Загрузка...</div>
     <div v-else-if="isError">Произошла ошибка...</div>
@@ -23,39 +29,8 @@
         </router-link>
       </li>
     </ul>
-  </section>
+  </article>
 </template>
-
-<script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import { ref, watch } from "vue";
-
-import useCategoriesStore from "@/stores/categories";
-import useCityIdStore from "@/stores/cityId";
-
-const { city } = storeToRefs(useCityIdStore());
-const categoriesStore = useCategoriesStore();
-const { storeCategories } = storeToRefs(categoriesStore);
-const { storeGetCategories } = categoriesStore;
-
-const isError = ref<boolean>(false);
-const isLoading = ref<boolean>(false);
-
-const getCategories = async (): Promise<void> => {
-  try {
-    isLoading.value = true;
-    await storeGetCategories();
-  } catch (error) {
-    console.error(error);
-    isError.value = true;
-  } finally {
-    isLoading.value = false;
-  }
-};
-getCategories();
-
-watch(city, getCategories);
-</script>
 
 <style scoped>
 .categories__title {
