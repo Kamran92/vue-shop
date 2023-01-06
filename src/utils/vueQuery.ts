@@ -2,7 +2,7 @@ import axios from "axios";
 
 const vueQuery = (timeout = 10000) => {
   interface IRequests {
-    [index: string]: any;
+    [index: string]: unknown;
   }
   const requests: IRequests = {};
 
