@@ -27,5 +27,5 @@ export default () => {
 
   watch(city, getCategories);
 
-  return { storeCategories, isError, isLoading };
+  return { isError, isLoading };
 };

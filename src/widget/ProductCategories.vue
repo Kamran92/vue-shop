@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 import AppContainer from "@/components/AppContainer.vue";
 import useCategories from "@/composables/useCategories";
+import useCategoriesStore from "@/stores/categories";
+import { storeToRefs } from "pinia";
 
-const { storeCategories, isLoading, isError } = useCategories();
+const { storeCategories } = storeToRefs(useCategoriesStore());
+const { isLoading, isError } = useCategories();
 </script>
 
 <template>
