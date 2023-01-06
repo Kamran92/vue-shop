@@ -1,8 +1,6 @@
-type TCallback = <T>(value: T) => Promise<void>;
-
-export default (callback: TCallback, delay = 1000) => {
+export default <T>(callback: (value: T) => Promise<void>, delay = 1000) => {
   let timeout: number;
-  return <T>(value: T) => {
+  return (value: Parameters<typeof callback>[0]) => {
     clearTimeout(timeout);
     timeout = setTimeout(() => callback(value), delay);
   };
