@@ -1,3 +1,20 @@
+<script lang="ts" setup>
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
+
+import useCityIdStore from "@/stores/cityId";
+
+import AppLocalities from "./AppLocalities.vue";
+import LocationIcon from "./icon/LocationIcon.vue";
+
+const { city } = storeToRefs(useCityIdStore());
+const isOpenLocalities = ref(false);
+
+const toggleOpenLocalities = (): void => {
+  isOpenLocalities.value = !isOpenLocalities.value;
+};
+</script>
+
 <template>
   <div class="mb-35 header">
     <div class="container">
@@ -9,25 +26,6 @@
     <app-localities v-if="isOpenLocalities" @close="toggleOpenLocalities" />
   </div>
 </template>
-
-<script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import { ref } from "vue";
-
-import useCityIdStore from "@/stores/cityId";
-
-import AppLocalities from "./AppLocalities.vue";
-import locationIcon from "./icon/LocationIcon.vue";
-
-const cityIdStore = useCityIdStore();
-const { city } = storeToRefs(cityIdStore);
-
-const isOpenLocalities = ref<boolean>(false);
-
-const toggleOpenLocalities = (): void => {
-  isOpenLocalities.value = !isOpenLocalities.value;
-};
-</script>
 
 <style scoped>
 .header {
