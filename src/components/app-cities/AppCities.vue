@@ -47,10 +47,13 @@ const { addCityId } = useCityIdStore();
 
 const findCity = ref({ id: 0, label: "" });
 
-const getCities = async <T, U>(term: T): Promise<U[]> => {
+interface ICities {
+  data: Array<{ id: number; city: string; label: string }>;
+}
+const getCities = async (term: string) => {
   const URL = "https://nlstar.com/api/catalog3/v1/city/";
   const params = { country: "ru", term };
-  const { data } = await axios.get(URL, { params });
+  const { data } = await axios.get<ICities>(URL, { params });
   return data.data.slice(0, 5);
 };
 
