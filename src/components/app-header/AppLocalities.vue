@@ -8,8 +8,6 @@ import { ref } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 
-const { addCityId } = useCityIdStore();
-
 const findCity = ref({ id: 0, label: "" });
 
 interface ICities {
@@ -23,7 +21,7 @@ const getCities = async (term: string) => {
 };
 
 const closeForm = () => {
-  addCityId(findCity.value);
+  useCityIdStore().addCityId(findCity.value);
   emit("close");
 };
 </script>
