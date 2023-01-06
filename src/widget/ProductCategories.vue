@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import AppContainer from "@/components/AppContainer.vue";
 import useCategories from "@/mixins/useCategories";
 
 const { storeCategories, isLoading, isError } = useCategories();
@@ -7,28 +8,28 @@ const { storeCategories, isLoading, isError } = useCategories();
 <template>
   <article class="container categories">
     <h2 class="categories__title">Категории товаров</h2>
-    <div v-if="isLoading">Загрузка...</div>
-    <div v-else-if="isError">Произошла ошибка...</div>
-    <ul v-else class="categories__list">
-      <li
-        v-for="({ slug, image, text_color, name }, index) in storeCategories"
-        :key="index"
-        class="categories__item"
-      >
-        <router-link
-          class="categories__link"
-          :to="`/category/${slug}`"
-          :style="`background-image: url('${image}')`"
+    <app-container :is-loading="isLoading" :is-error="isError">
+      <ul class="categories__list">
+        <li
+          v-for="({ slug, image, text_color, name }, index) in storeCategories"
+          :key="index"
+          class="categories__item"
         >
-          <h3
-            class="categories__category-title"
-            :style="`color: ${text_color}`"
+          <router-link
+            class="categories__link"
+            :to="`/category/${slug}`"
+            :style="`background-image: url('${image}')`"
           >
-            {{ name }}
-          </h3>
-        </router-link>
-      </li>
-    </ul>
+            <h3
+              class="categories__category-title"
+              :style="`color: ${text_color}`"
+            >
+              {{ name }}
+            </h3>
+          </router-link>
+        </li>
+      </ul>
+    </app-container>
   </article>
 </template>
 
