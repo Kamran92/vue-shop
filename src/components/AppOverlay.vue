@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onUnmounted } from "vue";
 
-const body = document.querySelector<HTMLElement>("body");
+const body = document.querySelector("body");
 
 if (body) {
   body.classList.add("remove-body-scroll");
