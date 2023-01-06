@@ -16,9 +16,9 @@ const activeFilter = computed({
 });
 
 const getFilters = () => {
-  const { storeGetCategoryBySlug } = useCategoriesStore();
   const { categorySlug } = useRoute().params;
   if (typeof categorySlug !== "string") return [];
+  const { storeGetCategoryBySlug } = useCategoriesStore();
   const category = storeGetCategoryBySlug(categorySlug);
   const children = category?.children;
   return children ? [FILTER_SLUG_ALL, ...children] : [];
@@ -29,8 +29,8 @@ const setActiveFilter = (slug: string) => {
 };
 
 const isShowFilters = () => {
-  const numberFilters = 2;
-  return getFilters().length > numberFilters;
+  const NUMBER_FILTERS = 2;
+  return getFilters().length > NUMBER_FILTERS;
 };
 
 if (isShowFilters()) {
