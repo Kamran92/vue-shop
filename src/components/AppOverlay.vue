@@ -10,10 +10,10 @@ import { onUnmounted } from "vue";
 const body = document.querySelector<HTMLElement>("body");
 
 if (body) {
-  body.style.overflow = "hidden";
+  body.classList.add("remove-body-scroll");
 
   onUnmounted(() => {
-    body.removeAttribute("style");
+    body.classList.remove("remove-body-scroll");
   });
 }
 </script>
