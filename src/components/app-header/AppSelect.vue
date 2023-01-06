@@ -1,39 +1,3 @@
-<template>
-  <div class="select">
-    <div class="select__wrap">
-      <input
-        ref="input"
-        v-model="findValue"
-        :class="{
-          'select__input--focus': isList || isFindValueMoreThreeCharacters,
-        }"
-        class="select__input"
-        placeholder="Например, Санкт-петербург"
-        type="text"
-      />
-      <button class="select__input-btn" @click="setCity(defaultModelValue)">
-        <cross-icon class="select__input-icon" />
-      </button>
-    </div>
-    <ul
-      v-if="isFindValueMoreThreeCharacters && !selectedValue.label"
-      class="select__list"
-    >
-      <li v-if="isLoading" class="select__item">Загрузка...</li>
-      <li v-else-if="!isList" class="select__item">Ничего не найдено...</li>
-      <li
-        v-for="item in list"
-        v-else
-        :key="item.id"
-        class="select__item"
-        @click="setCity({ id: item.id, label: item.city })"
-      >
-        {{ item.label }}
-      </li>
-    </ul>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import crossIcon from "./icon/CrossIcon.vue";
 import debounce from "@/utils/debounce";
@@ -97,6 +61,42 @@ watch(findValue, (newValue: string) => {
   debounceGetCities(newValue);
 });
 </script>
+
+<template>
+  <div class="select">
+    <div class="select__wrap">
+      <input
+        ref="input"
+        v-model="findValue"
+        :class="{
+          'select__input--focus': isList || isFindValueMoreThreeCharacters,
+        }"
+        class="select__input"
+        placeholder="Например, Санкт-петербург"
+        type="text"
+      />
+      <button class="select__input-btn" @click="setCity(defaultModelValue)">
+        <cross-icon class="select__input-icon" />
+      </button>
+    </div>
+    <ul
+      v-if="isFindValueMoreThreeCharacters && !selectedValue.label"
+      class="select__list"
+    >
+      <li v-if="isLoading" class="select__item">Загрузка...</li>
+      <li v-else-if="!isList" class="select__item">Ничего не найдено...</li>
+      <li
+        v-for="item in list"
+        v-else
+        :key="item.id"
+        class="select__item"
+        @click="setCity({ id: item.id, label: item.city })"
+      >
+        {{ item.label }}
+      </li>
+    </ul>
+  </div>
+</template>
 
 <style scoped>
 .select {

@@ -1,9 +1,3 @@
-<template>
-  <div class="overlay">
-    <slot></slot>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { onUnmounted } from "vue";
 
@@ -17,6 +11,12 @@ if (body) {
   });
 }
 </script>
+
+<template>
+  <div class="overlay">
+    <slot></slot>
+  </div>
+</template>
 
 <style scoped>
 .overlay {

@@ -1,3 +1,33 @@
+<script lang="ts" setup>
+import AppSelect from "./AppSelect.vue";
+import closeIcon from "./icon/CrossIcon.vue";
+import AppOverlay from "@/components/AppOverlay.vue";
+import useCityIdStore from "@/stores/cityId";
+import axios from "axios";
+import { ref } from "vue";
+
+const emit = defineEmits<{ (e: "close"): void }>();
+
+const { addCityId } = useCityIdStore();
+
+const findCity = ref({ id: 0, label: "" });
+
+interface ICities {
+  data: Array<{ id: number; city: string; label: string }>;
+}
+const getCities = async (term: string) => {
+  const URL = "https://nlstar.com/api/catalog3/v1/city/";
+  const params = { country: "ru", term };
+  const { data } = await axios.get<ICities>(URL, { params });
+  return data.data.slice(0, 5);
+};
+
+const closeForm = () => {
+  addCityId(findCity.value);
+  emit("close");
+};
+</script>
+
 <template>
   <app-overlay>
     <form class="localities__form" @submit.prevent="">
@@ -30,36 +60,6 @@
     </form>
   </app-overlay>
 </template>
-
-<script lang="ts" setup>
-import AppSelect from "./AppSelect.vue";
-import closeIcon from "./icon/CrossIcon.vue";
-import AppOverlay from "@/components/AppOverlay.vue";
-import useCityIdStore from "@/stores/cityId";
-import axios from "axios";
-import { ref } from "vue";
-
-const emit = defineEmits<{ (e: "close"): void }>();
-
-const { addCityId } = useCityIdStore();
-
-const findCity = ref({ id: 0, label: "" });
-
-interface ICities {
-  data: Array<{ id: number; city: string; label: string }>;
-}
-const getCities = async (term: string) => {
-  const URL = "https://nlstar.com/api/catalog3/v1/city/";
-  const params = { country: "ru", term };
-  const { data } = await axios.get<ICities>(URL, { params });
-  return data.data.slice(0, 5);
-};
-
-const closeForm = () => {
-  addCityId(findCity.value);
-  emit("close");
-};
-</script>
 
 <style scoped>
 .localities__form {
