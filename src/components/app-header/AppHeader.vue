@@ -6,7 +6,7 @@
         <span class="header__title"> {{ city.label }} </span>
       </button>
     </div>
-    <app-cities v-if="isOpenLocalities" @close="toggleOpenLocalities" />
+    <app-localities v-if="isOpenLocalities" @close="toggleOpenLocalities" />
   </div>
 </template>
 
@@ -14,10 +14,10 @@
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-import AppCities from "@/components/app-cities/AppCities.vue";
 import useCityIdStore from "@/stores/cityId";
 
-import locationIcon from "./icon/locationIcon.vue";
+import AppLocalities from "./AppLocalities.vue";
+import locationIcon from "./icon/LocationIcon.vue";
 
 const cityIdStore = useCityIdStore();
 const { city } = storeToRefs(cityIdStore);

@@ -39,7 +39,7 @@ import { computed, Ref, ref, watch } from "vue";
 
 import debounce from "@/utils/debounce";
 
-import crossIcon from "./icon/crossIcon.vue";
+import crossIcon from "./icon/CrossIcon.vue";
 
 interface IModeValue {
   id: number;

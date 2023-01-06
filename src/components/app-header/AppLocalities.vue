@@ -35,11 +35,11 @@
 import axios from "axios";
 import { ref } from "vue";
 
-import AppSelect from "@/components/app-select/AppSelect.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
 import useCityIdStore from "@/stores/cityId";
 
-import closeIcon from "./icon/crossIcon.vue";
+import AppSelect from "./AppSelect.vue";
+import closeIcon from "./icon/CrossIcon.vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 
