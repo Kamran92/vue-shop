@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppSelect from "./AppSelect.vue";
+import HeaderSelect from "./HeaderSelect.vue";
 import closeIcon from "./icon/CrossIcon.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
 import useCityIdStore from "@/stores/cityId";
@@ -32,7 +32,7 @@ const closeForm = () => {
       <div class="localities__wrap">
         <label class="localities__label">
           <span class="localities__span"> Выбор населённого пункта: </span>
-          <app-select
+          <header-select
             v-model="findCity"
             :get-list="getCities"
             class="localities__select"
