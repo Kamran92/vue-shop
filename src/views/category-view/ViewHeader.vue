@@ -18,7 +18,7 @@ const getTitle = () => {
   </router-link>
 </template>
 
-<style>
+<style scoped>
 .link {
   display: flex;
   align-items: center;
