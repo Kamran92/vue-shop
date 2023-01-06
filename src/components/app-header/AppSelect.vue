@@ -21,13 +21,12 @@ const emit = defineEmits<{
 const list: Ref<TList> = ref([]);
 const findValue = ref("");
 const isLoading = ref(false);
-const defaultModelValue = { id: 0, label: "" };
+const DEFAULT_MODEL_VALUE = { id: 0, label: "" };
 
 const isList = computed(() => !!list.value.length);
 const isFindValueMoreThreeCharacters = computed(
   () => findValue.value.length > 3
 );
-
 const selectedValue = computed({
   get: () => props.modelValue,
   set: (value) => {
@@ -57,7 +56,7 @@ watch(findValue, (newValue: string) => {
   if (newValue === selectedValue.value.label) return;
 
   isLoading.value = true;
-  selectedValue.value = defaultModelValue;
+  selectedValue.value = DEFAULT_MODEL_VALUE;
   debounceGetCities(newValue);
 });
 </script>
@@ -75,7 +74,7 @@ watch(findValue, (newValue: string) => {
         placeholder="Например, Санкт-петербург"
         type="text"
       />
-      <button class="select__input-btn" @click="setCity(defaultModelValue)">
+      <button class="select__input-btn" @click="setCity(DEFAULT_MODEL_VALUE)">
         <cross-icon class="select__input-icon" />
       </button>
     </div>
