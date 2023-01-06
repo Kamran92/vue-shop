@@ -6,13 +6,14 @@ import useCityIdStore from "@/stores/cityId";
 import axios from "axios";
 import { ref } from "vue";
 
+interface ICities {
+  data: Array<{ id: number; city: string; label: string }>;
+}
+
 const emit = defineEmits<{ (e: "close"): void }>();
 
 const findCity = ref({ id: 0, label: "" });
 
-interface ICities {
-  data: Array<{ id: number; city: string; label: string }>;
-}
 const getCities = async (term: string) => {
   const URL = "https://nlstar.com/api/catalog3/v1/city/";
   const params = { country: "ru", term };
