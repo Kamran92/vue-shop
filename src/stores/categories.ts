@@ -6,26 +6,20 @@ import { Ref, ref } from "vue";
 export default defineStore("categories", () => {
   const { city } = storeToRefs(useCityIdStore());
 
-  interface IChildren {
-    name: string;
-    slug: string;
-  }
-  interface ICategories {
+  type TCategories = Array<{
     slug: string;
     image: string;
     text_color: string;
     name: string;
-    children: Array<IChildren>;
-  }
-  const storeCategories: Ref<Array<ICategories>> = ref([]);
+    children: Array<{ name: string; slug: string }>;
+  }>;
+  const storeCategories: Ref<TCategories> = ref([]);
 
   const storeGetCategories = async () => {
     try {
       const URL = "https://nlstar.com/ru/api/catalog3/v1/menutags/";
       const params = { city_id: city.value.id };
-      const { data } = await axios.get<{ tags: ICategories[] }>(URL, {
-        params,
-      });
+      const { data } = await axios.get(URL, { params });
       storeCategories.value = data.tags;
     } catch (error) {
       console.log(error);
