@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
-
-import useCategoriesStore from "@/stores/categories";
-
 import BackIcon from "./icons/BackIcon.vue";
+import useCategoriesStore from "@/stores/categories";
+import { useRoute } from "vue-router";
 
 const getTitle = () => {
   const { storeGetCategoryBySlug } = useCategoriesStore();

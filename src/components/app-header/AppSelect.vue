@@ -35,11 +35,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, Ref, ref, watch } from "vue";
-
-import debounce from "@/utils/debounce";
-
 import crossIcon from "./icon/CrossIcon.vue";
+import debounce from "@/utils/debounce";
+import { computed, Ref, ref, watch } from "vue";
 
 interface IModeValue {
   id: number;

@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-import { storeToRefs } from "pinia";
-import { ref } from "vue";
-
-import useCityIdStore from "@/stores/cityId";
-
 import AppLocalities from "./AppLocalities.vue";
 import LocationIcon from "./icon/LocationIcon.vue";
+import useCityIdStore from "@/stores/cityId";
+import { storeToRefs } from "pinia";
+import { ref } from "vue";
 
 const { city } = storeToRefs(useCityIdStore());
 const isOpenLocalities = ref(false);

@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import AppContainer from "@/components/AppContainer.vue";
+import useCityIdStore from "@/stores/cityId";
+import ProductCard from "@/widget/widget-products/components/ProductCard.vue";
 import axios from "axios";
 import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
-
-import AppContainer from "@/components/AppContainer.vue";
-import useCityIdStore from "@/stores/cityId";
-import ProductCard from "@/widget/widget-products/components/ProductCard.vue";
 
 const props = defineProps<{ activeFilter: string }>();
 const { categorySlug } = useRoute().params;

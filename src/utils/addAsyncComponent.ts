@@ -1,7 +1,6 @@
-import { defineAsyncComponent } from "vue";
-
 import AppError from "@/components/AppError.vue";
 import AppLoading from "@/components/AppLoading.vue";
+import { defineAsyncComponent } from "vue";
 
 export default (
   loader: () => Promise<any>,

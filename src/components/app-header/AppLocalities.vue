@@ -32,14 +32,12 @@
 </template>
 
 <script lang="ts" setup>
-import axios from "axios";
-import { ref } from "vue";
-
-import AppOverlay from "@/components/AppOverlay.vue";
-import useCityIdStore from "@/stores/cityId";
-
 import AppSelect from "./AppSelect.vue";
 import closeIcon from "./icon/CrossIcon.vue";
+import AppOverlay from "@/components/AppOverlay.vue";
+import useCityIdStore from "@/stores/cityId";
+import axios from "axios";
+import { ref } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 

@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
 import ProductFilter from "./components/ProductFilter.vue";
 import ProductList from "./components/ProductList.vue";
+import { ref } from "vue";
 
 const activeFilter = ref("all");
 </script>

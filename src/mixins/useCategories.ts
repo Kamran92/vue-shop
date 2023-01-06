@@ -1,8 +1,7 @@
-import { storeToRefs } from "pinia";
-import { ref, watch } from "vue";
-
 import useCategoriesStore from "@/stores/categories";
 import useCityIdStore from "@/stores/cityId";
+import { storeToRefs } from "pinia";
+import { ref, watch } from "vue";
 
 export default () => {
   const { storeCategories } = storeToRefs(useCategoriesStore());

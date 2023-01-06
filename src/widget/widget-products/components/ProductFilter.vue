@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import useCategoriesStore from "@/stores/categories";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-
-import useCategoriesStore from "@/stores/categories";
 
 const props = defineProps<{ modelValue: string }>();
 const emit = defineEmits<{ (e: "update:modelValue", value: string): void }>();
