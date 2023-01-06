@@ -8,9 +8,9 @@ import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 const props = defineProps<{ activeFilter: string }>();
+
 const { categorySlug } = useRoute().params;
 const { city } = storeToRefs(useCityIdStore());
-
 const products = ref([]);
 const isLoading = ref(false);
 const isError = ref(false);
