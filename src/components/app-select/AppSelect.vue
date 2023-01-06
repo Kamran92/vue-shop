@@ -10,10 +10,8 @@
         class="select__input"
         placeholder="Например, Санкт-петербург"
         type="text"
-        @focus="isFocusInput = true"
-        @blur="isFocusInput = false"
       />
-      <button class="select__input-btn" @click="setCity({ id: 0, label: '' })">
+      <button class="select__input-btn" @click="setCity(defaultModelValue)">
         <cross-icon class="select__input-icon" />
       </button>
     </div>
@@ -47,36 +45,35 @@ interface IModeValue {
   id: number;
   label: string;
 }
+type TList = Array<{ id: number; city: string; label: string }>;
+
 const props = defineProps<{
   modelValue: IModeValue;
-  getList: <T, U>(value: T) => Promise<Array<U>>;
+  getList: (value: string) => Promise<TList>;
 }>();
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: IModeValue): void;
 }>();
 
-interface IList {
-  id: number;
-  city: string;
-  label: string;
-}
-const list: Ref<IList[]> = ref([]);
-const findValue = ref<string>("");
-const isLoading = ref<boolean>(false);
-const isFocusInput = ref(false);
+const list: Ref<TList> = ref([]);
+const findValue = ref("");
+const isLoading = ref(false);
+const defaultModelValue = { id: 0, label: "" };
 
-const isList = computed<boolean>(() => !!list.value.length);
-const isFindValueMoreThreeCharacters = computed<boolean>(
+const isList = computed(() => !!list.value.length);
+const isFindValueMoreThreeCharacters = computed(
   () => findValue.value.length > 3
 );
 
-const selectedValue = computed<IModeValue>({
+const selectedValue = computed({
   get: () => props.modelValue,
-  set: (value) => emit("update:modelValue", value),
+  set: (value) => {
+    emit("update:modelValue", value);
+  },
 });
 
-const getList = async <T>(value: T): Promise<void> => {
+const getList = async (value: string) => {
   try {
     list.value = await props.getList(value);
   } catch (error) {
@@ -86,7 +83,7 @@ const getList = async <T>(value: T): Promise<void> => {
   }
 };
 
-const setCity = (city: IModeValue): void => {
+const setCity = (city: IModeValue) => {
   findValue.value = city.label;
   selectedValue.value = city;
   list.value = [];
@@ -98,7 +95,7 @@ watch(findValue, (newValue: string) => {
   if (newValue === selectedValue.value.label) return;
 
   isLoading.value = true;
-  selectedValue.value = { id: 0, label: "" };
+  selectedValue.value = defaultModelValue;
   debounceGetCities(newValue);
 });
 </script>
