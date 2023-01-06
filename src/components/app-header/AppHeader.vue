@@ -14,7 +14,7 @@ const toggleOpenLocalities = (): void => {
 </script>
 
 <template>
-  <div class="mb-35 header">
+  <div class="header">
     <div class="container">
       <button class="header__btn" @click="toggleOpenLocalities">
         <location-icon class="header__icon" />
@@ -52,9 +52,5 @@ const toggleOpenLocalities = (): void => {
   font-size: 15px;
   line-height: 24px;
   letter-spacing: 0px;
-}
-
-.mb-35 {
-  margin-bottom: 35px;
 }
 </style>
