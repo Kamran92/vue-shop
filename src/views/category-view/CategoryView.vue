@@ -7,6 +7,7 @@ const ViewHeader = addAsyncComponent(() => import("./ViewHeader.vue"));
 const WidgetProducts = addAsyncComponent(
   () => import("@/widget/widget-products/WidgetProducts.vue")
 );
+
 const { isLoading, isError } = useCategories();
 </script>
 
@@ -17,12 +18,12 @@ const { isLoading, isError } = useCategories();
     :is-error="isError"
   >
     <view-header class="category-view__header" />
-    <widget-products class="category-view__products" />
+    <widget-products class="category-view__widget" />
   </app-container>
 </template>
 
 <style scoped>
-.category-view__products {
+.category-view__widget {
   margin-top: 20px;
 }
 </style>
