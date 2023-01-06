@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AppContainer from "@/components/AppContainer.vue";
-import useCategories from "@/mixins/useCategories";
+import useCategories from "@/composables/useCategories";
 import addAsyncComponent from "@/utils/addAsyncComponent";
 
 const ViewHeader = addAsyncComponent(() => import("./ViewHeader.vue"));

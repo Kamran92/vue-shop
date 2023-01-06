@@ -1,11 +1,11 @@
 import useCategoriesStore from "@/stores/categories";
-import useCityIdStore from "@/stores/cityId";
+import useCityStore from "@/stores/city";
 import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 
 export default () => {
   const { storeCategories } = storeToRefs(useCategoriesStore());
-  const { city } = storeToRefs(useCityIdStore());
+  const { city } = storeToRefs(useCityStore());
   const { storeGetCategories } = useCategoriesStore();
 
   const isError = ref(false);

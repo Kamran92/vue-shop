@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import AppContainer from "@/components/AppContainer.vue";
-import useCategories from "@/mixins/useCategories";
+import useCategories from "@/composables/useCategories";
 
 const { storeCategories, isLoading, isError } = useCategories();
 </script>

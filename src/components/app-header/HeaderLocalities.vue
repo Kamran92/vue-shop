@@ -2,13 +2,15 @@
 import HeaderSelect from "./HeaderSelect.vue";
 import closeIcon from "./icon/CrossIcon.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
-import useCityIdStore from "@/stores/cityId";
+import useCityStore from "@/stores/city";
 import axios from "axios";
 import { ref } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 
-const findCity = ref({ id: 0, label: "" });
+const { addCity } = useCityStore();
+
+const findCity = ref({ id: 0, title: "" });
 
 interface ICities {
   data: Array<{ id: number; city: string; label: string }>;
@@ -21,7 +23,7 @@ const getCities = async (term: string) => {
 };
 
 const closeForm = () => {
-  useCityIdStore().addCityId(findCity.value);
+  addCity(findCity.value);
   emit("close");
 };
 </script>
@@ -41,7 +43,7 @@ const closeForm = () => {
         <button
           class="localities__btn-submit"
           type="button"
-          :disabled="findCity.label === ''"
+          :disabled="findCity.title === ''"
           @click="closeForm"
         >
           Подтвердить

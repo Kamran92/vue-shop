@@ -1,10 +1,10 @@
-import useCityIdStore from "@/stores/cityId";
+import useCityStore from "@/stores/city";
 import axios from "axios";
 import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";
 
 export default defineStore("categories", () => {
-  const { city } = storeToRefs(useCityIdStore());
+  const { city } = storeToRefs(useCityStore());
 
   type TCategories = Array<{
     slug: string;

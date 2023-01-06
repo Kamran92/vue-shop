@@ -5,7 +5,7 @@ import { computed, Ref, ref, watch } from "vue";
 
 interface IModeValue {
   id: number;
-  label: string;
+  title: string;
 }
 type TList = Array<{ id: number; city: string; label: string }>;
 
@@ -21,7 +21,7 @@ const emit = defineEmits<{
 const list: Ref<TList> = ref([]);
 const findValue = ref("");
 const isLoading = ref(false);
-const DEFAULT_MODEL_VALUE = { id: 0, label: "" };
+const DEFAULT_MODEL_VALUE = { id: 0, title: "" };
 
 const isList = computed(() => !!list.value.length);
 const isFindValueMoreThreeCharacters = computed(
@@ -45,7 +45,7 @@ const getList = async (value: string) => {
 };
 
 const setCity = (city: IModeValue) => {
-  findValue.value = city.label;
+  findValue.value = city.title;
   selectedValue.value = city;
   list.value = [];
 };
@@ -53,7 +53,7 @@ const setCity = (city: IModeValue) => {
 const debounceGetCities = debounce(getList);
 watch(findValue, (newValue: string) => {
   if (!isFindValueMoreThreeCharacters.value) return;
-  if (newValue === selectedValue.value.label) return;
+  if (newValue === selectedValue.value.title) return;
 
   isLoading.value = true;
   selectedValue.value = DEFAULT_MODEL_VALUE;
@@ -79,7 +79,7 @@ watch(findValue, (newValue: string) => {
       </button>
     </div>
     <ul
-      v-if="isFindValueMoreThreeCharacters && !selectedValue.label"
+      v-if="isFindValueMoreThreeCharacters && !selectedValue.title"
       class="select__list"
     >
       <li v-if="isLoading" class="select__item">Загрузка...</li>
@@ -89,7 +89,7 @@ watch(findValue, (newValue: string) => {
         v-else
         :key="item.id"
         class="select__item"
-        @click="setCity({ id: item.id, label: item.city })"
+        @click="setCity({ id: item.id, title: item.city })"
       >
         {{ item.label }}
       </li>

@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import HeaderLocalities from "./HeaderLocalities.vue";
 import LocationIcon from "./icon/LocationIcon.vue";
-import useCityIdStore from "@/stores/cityId";
+import useCityStore from "@/stores/city";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-const { city } = storeToRefs(useCityIdStore());
+const { city } = storeToRefs(useCityStore());
 const isOpenLocalities = ref(false);
 
 const toggleOpenLocalities = () => {
@@ -18,7 +18,7 @@ const toggleOpenLocalities = () => {
     <div class="container">
       <button class="header__btn" @click="toggleOpenLocalities">
         <location-icon class="header__icon" />
-        <span class="header__title"> {{ city.label }} </span>
+        <span class="header__title"> {{ city.title }} </span>
       </button>
     </div>
     <header-localities v-if="isOpenLocalities" @close="toggleOpenLocalities" />
