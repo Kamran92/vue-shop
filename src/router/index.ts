@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import CategoryView from "@/views/CategoryView.vue";
+import CategoryView from "@/views/category-view/CategoryView.vue";
 import HomeView from "@/views/HomeView.vue";
 
 const routes: Array<RouteRecordRaw> = [
