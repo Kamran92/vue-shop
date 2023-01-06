@@ -8,7 +8,7 @@ import { ref } from "vue";
 const { city } = storeToRefs(useCityIdStore());
 const isOpenLocalities = ref(false);
 
-const toggleOpenLocalities = (): void => {
+const toggleOpenLocalities = () => {
   isOpenLocalities.value = !isOpenLocalities.value;
 };
 </script>

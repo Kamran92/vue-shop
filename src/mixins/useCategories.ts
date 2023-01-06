@@ -8,10 +8,10 @@ export default () => {
   const { city } = storeToRefs(useCityIdStore());
   const { storeGetCategories } = useCategoriesStore();
 
-  const isError = ref<boolean>(false);
-  const isLoading = ref<boolean>(false);
+  const isError = ref(false);
+  const isLoading = ref(false);
 
-  const getCategories = async (): Promise<void> => {
+  const getCategories = async () => {
     try {
       isLoading.value = true;
       await storeGetCategories();

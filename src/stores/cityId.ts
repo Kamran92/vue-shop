@@ -5,7 +5,7 @@ export default defineStore("cityId", () => {
   const city = ref({ id: 1, label: "Новосибирск" });
 
   type TCity = typeof city.value;
-  const addCityId = (value: TCity): void => {
+  const addCityId = (value: TCity) => {
     city.value = value;
   };
 
