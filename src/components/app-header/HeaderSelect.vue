@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import crossIcon from "./icon/CrossIcon.vue";
 import debounce from "@/utils/debounce";
+import axios from "axios";
 import { computed, Ref, ref, watch } from "vue";
 
 interface IModeValue {
@@ -9,10 +10,7 @@ interface IModeValue {
 }
 type TList = Array<{ id: number; city: string; label: string }>;
 
-const props = defineProps<{
-  modelValue: IModeValue;
-  getList: (value: string) => Promise<TList>;
-}>();
+const props = defineProps<{ modelValue: IModeValue }>();
 
 const emit = defineEmits<{
   (e: "update:modelValue", value: IModeValue): void;
@@ -34,9 +32,12 @@ const selectedValue = computed({
   },
 });
 
-const getList = async (value: string) => {
+const getCities = async (term: string) => {
   try {
-    list.value = await props.getList(value);
+    const URL = "https://nlstar.com/api/catalog3/v1/city/";
+    const params = { country: "ru", term };
+    const { data } = await axios.get<{ data: TList }>(URL, { params });
+    list.value = data.data.slice(0, 5);
   } catch (error) {
     console.error(error);
   } finally {
@@ -50,7 +51,7 @@ const setCity = (city: IModeValue) => {
   list.value = [];
 };
 
-const debounceGetCities = debounce(getList);
+const debounceGetCities = debounce(getCities);
 watch(findValue, (newValue: string) => {
   if (!isFindValueMoreThreeCharacters.value) return;
   if (newValue === selectedValue.value.title) return;
