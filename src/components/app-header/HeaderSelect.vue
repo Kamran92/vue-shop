@@ -165,6 +165,8 @@ watch(findValue, (newValue: string) => {
 }
 
 .select__item {
+  color: #979797;
+
   cursor: pointer;
 }
 
@@ -174,8 +176,6 @@ watch(findValue, (newValue: string) => {
 
 .select__item:nth-child(1) {
   padding-top: 12px;
-
-  color: #979797;
 
   border-top: 2px solid rgba(151, 151, 151, 0.3);
 }
