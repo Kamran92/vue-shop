@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import AppContainer from "@/components/AppContainer.vue";
+import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
+import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCategories from "@/composables/useCategories";
 import addAsyncComponent from "@/utils/addAsyncComponent";
 
@@ -12,14 +13,20 @@ const { isLoading, isError } = useCategories();
 </script>
 
 <template>
-  <app-container
+  <app-request-container
     class="container category-view"
     :is-loading="isLoading"
     :is-error="isError"
   >
-    <view-header class="category-view__header" />
-    <widget-products class="category-view__widget" />
-  </app-container>
+    <app-error-boundary component-link="@/views/category-view/ViewHeader.vue">
+      <view-header class="category-view__header" />
+    </app-error-boundary>
+    <app-error-boundary
+      component-link="@/widget/widget-products/WidgetProducts.vue"
+    >
+      <widget-products class="category-view__widget" />
+    </app-error-boundary>
+  </app-request-container>
 </template>
 
 <style scoped>
