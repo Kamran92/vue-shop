@@ -14,6 +14,7 @@ const findCity = ref({ id: 0, title: "" });
 const closeForm = () => {
   addCity(findCity.value);
   emit("close");
+  localStorage.setItem("city", JSON.stringify(findCity.value));
 };
 </script>
 

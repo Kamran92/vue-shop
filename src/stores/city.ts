@@ -9,5 +9,8 @@ export default defineStore("city", () => {
     city.value = value;
   };
 
+  const localStorageCity = localStorage.getItem("city");
+  if (localStorageCity) city.value = JSON.parse(localStorageCity);
+
   return { city, addCity };
 });
