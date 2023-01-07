@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppContainer from "@/components/AppContainer.vue";
+import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCategories from "@/composables/useCategories";
 import useCategoriesStore from "@/stores/categories";
 import { storeToRefs } from "pinia";
@@ -11,7 +11,7 @@ const { isLoading, isError } = useCategories();
 <template>
   <article class="container categories">
     <h2 class="categories__title">Категории товаров</h2>
-    <app-container :is-loading="isLoading" :is-error="isError">
+    <app-request-container :is-loading="isLoading" :is-error="isError">
       <ul class="categories__list">
         <li
           v-for="({ slug, image, text_color, name }, index) in storeCategories"
@@ -32,7 +32,7 @@ const { isLoading, isError } = useCategories();
           </router-link>
         </li>
       </ul>
-    </app-container>
+    </app-request-container>
   </article>
 </template>
 

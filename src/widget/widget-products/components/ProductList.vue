@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppContainer from "@/components/AppContainer.vue";
+import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCityStore from "@/stores/city";
 import ProductCard from "@/widget/widget-products/components/ProductCard.vue";
 import axios from "axios";
@@ -36,13 +36,13 @@ watch(() => props.activeFilter, getProducts, { immediate: true });
 </script>
 
 <template>
-  <app-container :is-loading="isLoading" :is-error="isError">
+  <app-request-container :is-loading="isLoading" :is-error="isError">
     <ul class="list">
       <li v-for="(product, index) in products" :key="index" class="list__item">
         <product-card :product="product" />
       </li>
     </ul>
-  </app-container>
+  </app-request-container>
 </template>
 
 <style scoped>
