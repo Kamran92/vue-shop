@@ -6,7 +6,7 @@ import addAsyncComponent from "@/utils/addAsyncComponent";
 
 const ViewHeader = addAsyncComponent(() => import("./ViewHeader.vue"));
 const WidgetProducts = addAsyncComponent(
-  () => import("@/widget/widget-products/WidgetProducts.vue")
+  () => import("@/widgets/widget-products/WidgetProducts.vue")
 );
 
 const { isLoading, isError } = useCategories();
@@ -22,7 +22,7 @@ const { isLoading, isError } = useCategories();
       <view-header class="category-view__header" />
     </app-error-boundary>
     <app-error-boundary
-      component-link="@/widget/widget-products/WidgetProducts.vue"
+      component-link="@/widgets/widget-products/WidgetProducts.vue"
     >
       <widget-products class="category-view__widget" />
     </app-error-boundary>

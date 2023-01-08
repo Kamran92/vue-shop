@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCityStore from "@/stores/city";
-import ProductCard from "@/widget/widget-products/components/ProductCard.vue";
+import ProductCard from "@/widgets/widget-products/components/ProductCard.vue";
 import axios from "axios";
 import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
