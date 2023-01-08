@@ -3,6 +3,11 @@ import BackIcon from "./icons/BackIcon.vue";
 import useCategoriesStore from "@/stores/categories";
 import { useRoute } from "vue-router";
 
+defineProps<{
+  title?: string;
+  link?: string;
+}>();
+
 const getTitle = () => {
   const { storeGetCategoryBySlug } = useCategoriesStore();
   const { categorySlug } = useRoute().params;
@@ -12,10 +17,11 @@ const getTitle = () => {
 </script>
 
 <template>
-  <router-link class="link" to="/">
+  <router-link v-if="link" class="link" to="/">
     <back-icon class="link__icon" />
     <h2 class="link__title">{{ getTitle() }}</h2>
   </router-link>
+  <h2 v-else class="link__title">{{ title }}</h2>
 </template>
 
 <style scoped>

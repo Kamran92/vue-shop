@@ -9,9 +9,12 @@ const { isLoading, isError } = useCategories();
 </script>
 
 <template>
-  <article class="container categories">
-    <h2 class="categories__title">Категории товаров</h2>
-    <app-request-container :is-loading="isLoading" :is-error="isError">
+  <app-request-container
+    :is-loading="isLoading"
+    :is-error="isError"
+    class="container"
+  >
+    <article class="categories">
       <ul class="categories__list">
         <li
           v-for="({ slug, image, text_color, name }, index) in storeCategories"
@@ -32,20 +35,11 @@ const { isLoading, isError } = useCategories();
           </router-link>
         </li>
       </ul>
-    </app-request-container>
-  </article>
+    </article>
+  </app-request-container>
 </template>
 
 <style scoped>
-.categories__title {
-  margin-bottom: 20px;
-
-  color: #272727;
-  font-weight: 500;
-  font-size: 44px;
-  line-height: 44px;
-}
-
 .categories__list {
   display: flex;
   flex-wrap: wrap;

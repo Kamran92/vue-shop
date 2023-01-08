@@ -1,5 +1,5 @@
+import CategoryView from "@/views/CategoryView.vue";
 import HomeView from "@/views/HomeView.vue";
-import CategoryView from "@/views/category-view/CategoryView.vue";
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: Array<RouteRecordRaw> = [
@@ -9,6 +9,10 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
     props: {
       widgets: ["WidgetCategories"],
+      header: {
+        title: "Категории товаров",
+        link: "",
+      },
     },
   },
   {
@@ -17,6 +21,10 @@ const routes: Array<RouteRecordRaw> = [
     component: CategoryView,
     props: {
       widgets: ["WidgetProducts"],
+      header: {
+        title: "",
+        link: "/",
+      },
     },
   },
 ];
