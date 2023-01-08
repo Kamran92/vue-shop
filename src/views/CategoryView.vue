@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
 import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
 import useCategories from "@/composables/useCategories";
-import addAsyncComponent from "@/utils/addAsyncComponent";
-
-const ViewHeader = addAsyncComponent(
-  () => import("@/common-components/view-header/ViewHeader.vue")
-);
 
 defineProps<{
   widgets: Array<string>;
@@ -26,9 +21,7 @@ const { isLoading, isError } = useCategories();
     :is-loading="isLoading"
     :is-error="isError"
   >
-    <app-error-boundary component-link="@/views/category-view/ViewHeader.vue">
-      <view-header :link="header.link" :title="header.title" />
-    </app-error-boundary>
+    <app-view-header :link="header.link" :title="header.title" />
     <app-widgets-loader :widgets="widgets" />
   </app-request-container>
 </template>
