@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
 import useCategories from "@/composables/useCategories";
 import addAsyncComponent from "@/utils/addAsyncComponent";
 
 const ViewHeader = addAsyncComponent(() => import("./ViewHeader.vue"));
-const WidgetProducts = addAsyncComponent(
-  () => import("@/widgets/widget-products/WidgetProducts.vue")
-);
+
+defineProps<{ widgets: Array<string> }>();
 
 const { isLoading, isError } = useCategories();
 </script>
@@ -21,16 +21,6 @@ const { isLoading, isError } = useCategories();
     <app-error-boundary component-link="@/views/category-view/ViewHeader.vue">
       <view-header class="category-view__header" />
     </app-error-boundary>
-    <app-error-boundary
-      component-link="@/widgets/widget-products/WidgetProducts.vue"
-    >
-      <widget-products class="category-view__widget" />
-    </app-error-boundary>
+    <app-widgets-loader :widgets="widgets" />
   </app-request-container>
 </template>
-
-<style scoped>
-.category-view__widget {
-  margin-top: 20px;
-}
-</style>

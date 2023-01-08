@@ -7,11 +7,17 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "home",
     component: HomeView,
+    props: {
+      widgets: ["WidgetCategories"],
+    },
   },
   {
     path: "/category/:categorySlug",
     name: "category",
     component: CategoryView,
+    props: {
+      widgets: ["WidgetProducts"],
+    },
   },
 ];
 
