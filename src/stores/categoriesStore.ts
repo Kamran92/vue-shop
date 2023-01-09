@@ -1,4 +1,4 @@
-import useCityStore from "@/stores/city";
+import useCityStore from "@/stores/cityStore";
 import axios from "axios";
 import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";

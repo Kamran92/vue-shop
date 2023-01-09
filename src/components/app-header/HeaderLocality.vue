@@ -2,7 +2,7 @@
 import HeaderSelect from "./HeaderSelect.vue";
 import closeIcon from "./icon/CrossIcon.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
-import useCityStore from "@/stores/city";
+import useCityStore from "@/stores/cityStore";
 import { ref } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();

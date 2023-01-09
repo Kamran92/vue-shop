@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import HeaderLocality from "./HeaderLocality.vue";
 import LocationIcon from "./icon/LocationIcon.vue";
-import useCityStore from "@/stores/city";
+import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
