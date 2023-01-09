@@ -9,18 +9,22 @@ import { useRoute } from "vue-router";
 
 const props = defineProps<{ activeFilter: string }>();
 
-const { categorySlug } = useRoute().params;
-const { city } = storeToRefs(useCityStore());
+const { params } = useRoute();
 const products = ref([]);
 const isLoading = ref(false);
 const isError = ref(false);
 
+const getCategorySlug = () => {
+  const { activeFilter } = props;
+  const { categorySlug } = params;
+  return activeFilter === "all" ? categorySlug : activeFilter;
+};
+
 const getProducts = async () => {
   try {
     isLoading.value = true;
-    const slug =
-      props.activeFilter === "all" ? categorySlug : props.activeFilter;
-    const URL = `https://nlstar.com/ru/api/catalog3/v1/menutags/${slug}/`;
+    const { city } = storeToRefs(useCityStore());
+    const URL = `https://nlstar.com/ru/api/catalog3/v1/menutags/${getCategorySlug()}/`;
     const params = { city_id: city.value.id };
     const { data } = await axios.get(URL, { params });
     products.value = data.products;
