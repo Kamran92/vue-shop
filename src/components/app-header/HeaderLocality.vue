@@ -7,11 +7,10 @@ import { ref } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 
-const { addCity } = useCityStore();
-
 const findCity = ref(null);
 
 const submitForm = () => {
+  const { addCity } = useCityStore();
   addCity(findCity.value);
   localStorage.setItem("city", JSON.stringify(findCity.value));
   emit("close");
