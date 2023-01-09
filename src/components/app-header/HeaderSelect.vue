@@ -14,13 +14,11 @@ const emit = defineEmits<{
 }>();
 
 const list: Ref<TList> = ref([]);
-const findValue = ref("");
+const findCity = ref("");
 const isLoading = ref(false);
 
 const isList = computed(() => !!list.value.length);
-const isFindValueMoreThreeCharacters = computed(
-  () => findValue.value.length > 3
-);
+const isFindCityMoreThreeCharacters = computed(() => findCity.value.length > 3);
 const selectedValue = computed({
   get: () => props.modelValue,
   set: (value) => {
@@ -42,14 +40,14 @@ const getCities = async (term: string) => {
 };
 
 const setCity = (city: TModelValue) => {
-  findValue.value = city?.title ?? "";
+  findCity.value = city?.title ?? "";
   selectedValue.value = city;
   list.value = [];
 };
 
 const debounceGetCities = debounce(getCities);
-watch(findValue, (newValue: string) => {
-  if (!isFindValueMoreThreeCharacters.value) return;
+watch(findCity, (newValue: string) => {
+  if (!isFindCityMoreThreeCharacters.value) return;
   if (newValue === selectedValue.value?.title) return;
 
   isLoading.value = true;
@@ -62,10 +60,9 @@ watch(findValue, (newValue: string) => {
   <div class="select">
     <div class="select__wrap">
       <input
-        ref="input"
-        v-model="findValue"
+        v-model="findCity"
         :class="{
-          'select__input--focus': isList || isFindValueMoreThreeCharacters,
+          'select__input--focus': isList || isFindCityMoreThreeCharacters,
         }"
         class="select__input"
         placeholder="Например, Санкт-петербург"
@@ -76,7 +73,7 @@ watch(findValue, (newValue: string) => {
       </button>
     </div>
     <ul
-      v-if="isFindValueMoreThreeCharacters && !selectedValue?.title"
+      v-if="isFindCityMoreThreeCharacters && !selectedValue?.title"
       class="select__list"
     >
       <li v-if="isLoading" class="select__item">Загрузка...</li>
