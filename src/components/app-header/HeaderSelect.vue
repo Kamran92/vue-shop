@@ -4,22 +4,18 @@ import debounce from "@/utils/debounce";
 import axios from "axios";
 import { computed, Ref, ref, watch } from "vue";
 
-interface IModeValue {
-  id: number;
-  title: string;
-}
+type TModelValue = { id: number; title: string } | null;
 type TList = Array<{ id: number; city: string; label: string }>;
 
-const props = defineProps<{ modelValue: IModeValue }>();
+const props = defineProps<{ modelValue: TModelValue }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: IModeValue): void;
+  (e: "update:modelValue", value: TModelValue): void;
 }>();
 
 const list: Ref<TList> = ref([]);
 const findValue = ref("");
 const isLoading = ref(false);
-const DEFAULT_MODEL_VALUE = { id: 0, title: "" };
 
 const isList = computed(() => !!list.value.length);
 const isFindValueMoreThreeCharacters = computed(
@@ -45,8 +41,8 @@ const getCities = async (term: string) => {
   }
 };
 
-const setCity = (city: IModeValue) => {
-  findValue.value = city.title;
+const setCity = (city: TModelValue) => {
+  findValue.value = city?.title ?? "";
   selectedValue.value = city;
   list.value = [];
 };
@@ -54,10 +50,10 @@ const setCity = (city: IModeValue) => {
 const debounceGetCities = debounce(getCities);
 watch(findValue, (newValue: string) => {
   if (!isFindValueMoreThreeCharacters.value) return;
-  if (newValue === selectedValue.value.title) return;
+  if (newValue === selectedValue.value?.title) return;
 
   isLoading.value = true;
-  selectedValue.value = DEFAULT_MODEL_VALUE;
+  selectedValue.value = null;
   debounceGetCities(newValue);
 });
 </script>
@@ -75,12 +71,12 @@ watch(findValue, (newValue: string) => {
         placeholder="Например, Санкт-петербург"
         type="text"
       />
-      <button class="select__input-btn" @click="setCity(DEFAULT_MODEL_VALUE)">
+      <button class="select__input-btn" @click="setCity(null)">
         <cross-icon class="select__input-icon" />
       </button>
     </div>
     <ul
-      v-if="isFindValueMoreThreeCharacters && !selectedValue.title"
+      v-if="isFindValueMoreThreeCharacters && !selectedValue?.title"
       class="select__list"
     >
       <li v-if="isLoading" class="select__item">Загрузка...</li>
