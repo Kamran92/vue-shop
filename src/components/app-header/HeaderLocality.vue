@@ -39,7 +39,7 @@ const submitForm = () => {
       <button
         class="localities__btn-close"
         type="button"
-        @click="$emit('close')"
+        @click="emit('close')"
       >
         <close-icon />
       </button>
