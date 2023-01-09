@@ -4,7 +4,7 @@ import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";
 
 export default defineStore("categories", () => {
-  const { city } = storeToRefs(useCityStore());
+  const { storeCity } = storeToRefs(useCityStore());
 
   type TCategories = Array<{
     slug: string;
@@ -18,7 +18,7 @@ export default defineStore("categories", () => {
   const storeGetCategories = async () => {
     try {
       const URL = "https://nlstar.com/ru/api/catalog3/v1/menutags/";
-      const params = { city_id: city.value.id };
+      const params = { city_id: storeCity.value.id };
       const { data } = await axios.get(URL, { params });
       storeCategories.value = data.tags;
     } catch (error) {

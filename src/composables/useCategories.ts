@@ -23,8 +23,8 @@ export default () => {
   const { storeCategories } = storeToRefs(useCategoriesStore());
   if (storeCategories.value.length === 0) getCategories();
 
-  const { city } = storeToRefs(useCityStore());
-  watch(city, getCategories);
+  const { storeCity } = storeToRefs(useCityStore());
+  watch(storeCity, getCategories);
 
   return { isError, isLoading };
 };

@@ -23,9 +23,9 @@ const getCategorySlug = () => {
 const getProducts = async () => {
   try {
     isLoading.value = true;
-    const { city } = storeToRefs(useCityStore());
+    const { storeCity } = storeToRefs(useCityStore());
     const URL = `https://nlstar.com/ru/api/catalog3/v1/menutags/${getCategorySlug()}/`;
-    const params = { city_id: city.value.id };
+    const params = { city_id: storeCity.value.id };
     const { data } = await axios.get(URL, { params });
     products.value = data.products;
   } catch (error) {

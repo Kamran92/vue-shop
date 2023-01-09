@@ -5,7 +5,7 @@ import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-const { city } = storeToRefs(useCityStore());
+const { storeCity } = storeToRefs(useCityStore());
 const isOpenLocalities = ref(false);
 
 const toggleOpenLocalities = () => {
@@ -18,7 +18,7 @@ const toggleOpenLocalities = () => {
     <div class="container">
       <button class="header__btn" @click="toggleOpenLocalities">
         <location-icon class="header__icon" />
-        <span class="header__title"> {{ city.title }} </span>
+        <span class="header__title"> {{ storeCity.title }} </span>
       </button>
     </div>
     <header-locality v-if="isOpenLocalities" @close="toggleOpenLocalities" />

@@ -10,8 +10,8 @@ const emit = defineEmits<{ (e: "close"): void }>();
 const findCity = ref(null);
 
 const submitForm = () => {
-  const { addCity } = useCityStore();
-  addCity(findCity.value);
+  const { storeAddCity } = useCityStore();
+  storeAddCity(findCity.value);
   localStorage.setItem("city", JSON.stringify(findCity.value));
   emit("close");
 };

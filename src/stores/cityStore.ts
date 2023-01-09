@@ -7,12 +7,12 @@ export default defineStore("city", () => {
     ? JSON.parse(localStorageCity)
     : { id: 1, title: "Новосибирск" };
 
-  const city = ref(defaultCity);
+  const storeCity = ref(defaultCity);
 
-  type TCity = typeof city.value;
-  const addCity = (value: TCity) => {
-    city.value = value;
+  type TCity = typeof storeCity.value;
+  const storeAddCity = (value: TCity) => {
+    storeCity.value = value;
   };
 
-  return { city, addCity };
+  return { storeCity, storeAddCity };
 });
