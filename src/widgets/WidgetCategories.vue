@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCategories from "@/composables/useCategories";
-import useCategoriesStore from "@/stores/categories";
+import useCategoriesStore from "@/stores/categoriesStore";
 import { storeToRefs } from "pinia";
 
 const { storeCategories } = storeToRefs(useCategoriesStore());
