@@ -9,10 +9,6 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
     props: {
       widgets: ["WidgetCategories"],
-      header: {
-        title: "Категории товаров",
-        link: "",
-      },
     },
   },
   {
@@ -21,10 +17,6 @@ const routes: Array<RouteRecordRaw> = [
     component: CategoryView,
     props: {
       widgets: ["WidgetProducts"],
-      header: {
-        title: "",
-        link: "/",
-      },
     },
   },
 ];
