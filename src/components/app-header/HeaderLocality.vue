@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import HeaderSelect from "./HeaderSelect.vue";
 import closeIcon from "./icon/CrossIcon.vue";
-import AppOverlay from "@/components/AppOverlay.vue";
 import useCityStore from "@/stores/cityStore";
 import { ref } from "vue";
 
@@ -18,32 +17,26 @@ const submitForm = () => {
 </script>
 
 <template>
-  <app-overlay>
-    <form class="localities__form" @submit.prevent="">
-      <div class="localities__wrap">
-        <label class="localities__label">
-          <span class="localities__span"> Выбор населённого пункта: </span>
-          <header-select v-model="findCity" class="localities__select" />
-        </label>
-        <button
-          class="localities__btn-submit"
-          type="button"
-          :disabled="findCity === null"
-          @click="submitForm"
-        >
-          Подтвердить
-        </button>
-      </div>
-
+  <form class="localities__form" @submit.prevent="">
+    <div class="localities__wrap">
+      <label class="localities__label">
+        <span class="localities__span"> Выбор населённого пункта: </span>
+        <header-select v-model="findCity" class="localities__select" />
+      </label>
       <button
-        class="localities__btn-close"
+        class="localities__btn-submit"
         type="button"
-        @click="emit('close')"
+        :disabled="findCity === null"
+        @click="submitForm"
       >
-        <close-icon />
+        Подтвердить
       </button>
-    </form>
-  </app-overlay>
+    </div>
+
+    <button class="localities__btn-close" type="button" @click="emit('close')">
+      <close-icon />
+    </button>
+  </form>
 </template>
 
 <style scoped>
