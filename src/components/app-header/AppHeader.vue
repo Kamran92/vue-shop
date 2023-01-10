@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import HeaderLocality from "./HeaderLocality.vue";
+import HeaderLocality from "./components/HeaderLocality.vue";
 import LocationIcon from "./icon/LocationIcon.vue";
 import AppOverlay from "@/components/AppOverlay.vue";
 import useCityStore from "@/stores/cityStore";
