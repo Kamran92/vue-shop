@@ -1,22 +1,32 @@
 <script setup lang="ts">
+import * as api from "../api";
 import ProductCard from "./ProductCard.vue";
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
-import axios from "@/plugins/axios";
 import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
-import { ref, watch } from "vue";
+import { Ref, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 
 const props = defineProps<{ activeFilter: string }>();
 
+type TProduct = Array<{
+  main_image_thumb_300?: string;
+  category?: { name?: string };
+  present_name?: string;
+  comment_name?: string;
+  price?: string;
+  allowed: boolean;
+  available: boolean;
+}>;
 const { params } = useRoute();
-const products = ref([]);
+const products: Ref<TProduct> = ref([]);
 const isLoading = ref(false);
 const isError = ref(false);
 
 const getCategorySlug = () => {
   const { activeFilter } = props;
   const { categorySlug } = params;
+  if (typeof categorySlug !== "string") return "";
   return activeFilter === "all" ? categorySlug : activeFilter;
 };
 
@@ -24,10 +34,10 @@ const getProducts = async () => {
   try {
     isLoading.value = true;
     const { storeCity } = storeToRefs(useCityStore());
-    const URL = `/ru/api/catalog3/v1/menutags/${getCategorySlug()}/`;
-    const params = { city_id: storeCity.value.id };
-    const { data } = await axios.get(URL, { params });
-    products.value = data.products;
+    products.value = await api.getProducts(
+      storeCity.value.id,
+      getCategorySlug()
+    );
   } catch (error) {
     console.error(error);
     isError.value = true;
