@@ -1,4 +1,4 @@
-import useCategoriesStore from "@/stores/categoriesStore";
+import useCategoriesStore from "@/stores/categories-store/categoriesStore";
 import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
