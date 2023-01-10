@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import crossIcon from "../icon/CrossIcon.vue";
+import axios from "@/plugins/axios";
 import debounce from "@/utils/debounce";
-import axios from "axios";
 import { computed, Ref, ref, watch } from "vue";
 
 type TModelValue = { id: number; title: string } | null;
@@ -28,7 +28,7 @@ const selectedValue = computed({
 
 const getCities = async (term: string) => {
   try {
-    const URL = "https://nlstar.com/api/catalog3/v1/city/";
+    const URL = "/api/catalog3/v1/city/";
     const params = { country: "ru", term };
     const { data } = await axios.get<{ data: TList }>(URL, { params });
     list.value = data.data.slice(0, 5);

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import ProductCard from "./ProductCard.vue";
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import axios from "@/plugins/axios";
 import useCityStore from "@/stores/cityStore";
-import axios from "axios";
 import { storeToRefs } from "pinia";
 import { ref, watch } from "vue";
 import { useRoute } from "vue-router";
@@ -24,7 +24,7 @@ const getProducts = async () => {
   try {
     isLoading.value = true;
     const { storeCity } = storeToRefs(useCityStore());
-    const URL = `https://nlstar.com/ru/api/catalog3/v1/menutags/${getCategorySlug()}/`;
+    const URL = `/ru/api/catalog3/v1/menutags/${getCategorySlug()}/`;
     const params = { city_id: storeCity.value.id };
     const { data } = await axios.get(URL, { params });
     products.value = data.products;

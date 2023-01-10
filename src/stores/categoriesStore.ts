@@ -1,5 +1,5 @@
+import axios from "@/plugins/axios";
 import useCityStore from "@/stores/cityStore";
-import axios from "axios";
 import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";
 
@@ -17,7 +17,7 @@ export default defineStore("categories", () => {
 
   const storeGetCategories = async () => {
     try {
-      const URL = "https://nlstar.com/ru/api/catalog3/v1/menutags/";
+      const URL = "/ru/api/catalog3/v1/menutags/";
       const params = { city_id: storeCity.value.id };
       const { data } = await axios.get(URL, { params });
       storeCategories.value = data.tags;
