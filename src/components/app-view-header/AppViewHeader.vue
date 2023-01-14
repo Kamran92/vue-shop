@@ -9,9 +9,9 @@ defineProps<{
 }>();
 
 const getTitle = () => {
-  const { storeGetCategoryBySlug } = useCategoriesStore();
   const { categorySlug } = useRoute().params;
   if (typeof categorySlug !== "string") return "";
+  const { storeGetCategoryBySlug } = useCategoriesStore();
   return storeGetCategoryBySlug(categorySlug)?.name ?? "";
 };
 </script>
