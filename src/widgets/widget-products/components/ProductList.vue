@@ -43,11 +43,12 @@ watch(() => props.activeFilter, getProducts, { immediate: true });
 
 <template>
   <app-request-container :is-loading="isLoading" :is-error="isError">
-    <ul class="list">
+    <ul v-if="products.length" class="list">
       <li v-for="(product, index) in products" :key="index" class="list__item">
         <product-card :product="product" />
       </li>
     </ul>
+    <p>Данных нет</p>
   </app-request-container>
 </template>
 
