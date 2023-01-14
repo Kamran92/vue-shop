@@ -1,4 +1,5 @@
 import * as api from "./api";
+import * as types from "./types";
 import useCityStore from "@/stores/cityStore";
 import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";
@@ -6,14 +7,7 @@ import { Ref, ref } from "vue";
 export default defineStore("categories", () => {
   const { storeCity } = storeToRefs(useCityStore());
 
-  type TCategories = Array<{
-    slug: string;
-    image: string;
-    text_color: string;
-    name: string;
-    children: Array<{ name: string; slug: string }>;
-  }>;
-  const storeCategories: Ref<TCategories> = ref([]);
+  const storeCategories: Ref<types.TCategories> = ref([]);
 
   const storeGetCategories = async () => {
     try {
