@@ -1,19 +1,17 @@
 <script lang="ts" setup>
 import * as api from "../api";
 import crossIcon from "../icon/CrossIcon.vue";
+import * as types from "../types";
 import debounce from "@/utils/debounce";
 import { computed, Ref, ref, watch } from "vue";
 
-type TModelValue = { id: number; title: string } | null;
-type TList = Array<{ id: number; city: string; label: string }>;
-
-const props = defineProps<{ modelValue: TModelValue }>();
+const props = defineProps<{ modelValue: types.TModelValue }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: TModelValue): void;
+  (e: "update:modelValue", value: types.TModelValue): void;
 }>();
 
-const list: Ref<TList> = ref([]);
+const list: Ref<types.TList> = ref([]);
 const findCity = ref("");
 const isLoading = ref(false);
 
@@ -36,7 +34,7 @@ const getCities = async (term: string) => {
   }
 };
 
-const setCity = (city: TModelValue) => {
+const setCity = (city: types.TModelValue) => {
   findCity.value = city?.title ?? "";
   selectedValue.value = city;
   list.value = [];
