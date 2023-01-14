@@ -15,7 +15,7 @@ const toggleOpenLocalities = () => {
 </script>
 
 <template>
-  <div class="header">
+  <header class="header">
     <div class="container">
       <button class="header__btn" @click="toggleOpenLocalities">
         <location-icon class="header__icon" />
@@ -26,7 +26,7 @@ const toggleOpenLocalities = () => {
     <app-overlay v-if="isOpenLocalities">
       <header-locality @close="toggleOpenLocalities" />
     </app-overlay>
-  </div>
+  </header>
 </template>
 
 <style scoped>

@@ -1,19 +1,17 @@
 <script lang="ts" setup>
+import * as api from "../api";
 import crossIcon from "../icon/CrossIcon.vue";
+import * as types from "../types";
 import debounce from "@/utils/debounce";
-import axios from "axios";
 import { computed, Ref, ref, watch } from "vue";
 
-type TModelValue = { id: number; title: string } | null;
-type TList = Array<{ id: number; city: string; label: string }>;
-
-const props = defineProps<{ modelValue: TModelValue }>();
+const props = defineProps<{ modelValue: types.TModelValue }>();
 
 const emit = defineEmits<{
-  (e: "update:modelValue", value: TModelValue): void;
+  (e: "update:modelValue", value: types.TModelValue): void;
 }>();
 
-const list: Ref<TList> = ref([]);
+const list: Ref<types.TList> = ref([]);
 const findCity = ref("");
 const isLoading = ref(false);
 
@@ -28,10 +26,7 @@ const selectedValue = computed({
 
 const getCities = async (term: string) => {
   try {
-    const URL = "https://nlstar.com/api/catalog3/v1/city/";
-    const params = { country: "ru", term };
-    const { data } = await axios.get<{ data: TList }>(URL, { params });
-    list.value = data.data.slice(0, 5);
+    list.value = await api.getCities(term);
   } catch (error) {
     console.error(error);
   } finally {
@@ -39,7 +34,7 @@ const getCities = async (term: string) => {
   }
 };
 
-const setCity = (city: TModelValue) => {
+const setCity = (city: types.TModelValue) => {
   findCity.value = city?.title ?? "";
   selectedValue.value = city;
   list.value = [];
