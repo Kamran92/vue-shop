@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import * as api from "../api";
+import * as types from "../types";
 import ProductCard from "./ProductCard.vue";
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
 import useCityStore from "@/stores/cityStore";
@@ -9,24 +10,15 @@ import { useRoute } from "vue-router";
 
 const props = defineProps<{ activeFilter: string }>();
 
-type TProduct = Array<{
-  main_image_thumb_300?: string;
-  category?: { name?: string };
-  present_name?: string;
-  comment_name?: string;
-  price?: string;
-  allowed: boolean;
-  available: boolean;
-}>;
 const { params } = useRoute();
-const products: Ref<TProduct> = ref([]);
+const products: Ref<types.TProducts> = ref([]);
 const isLoading = ref(false);
 const isError = ref(false);
 
 const getCategorySlug = () => {
-  const { activeFilter } = props;
   const { categorySlug } = params;
   if (typeof categorySlug !== "string") return "";
+  const { activeFilter } = props;
   return activeFilter === "all" ? categorySlug : activeFilter;
 };
 

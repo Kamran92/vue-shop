@@ -1,15 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  product: {
-    main_image_thumb_300?: string;
-    category?: { name?: string };
-    present_name?: string;
-    comment_name?: string;
-    price?: string;
-    allowed: boolean;
-    available: boolean;
-  };
-}>();
+import * as types from "../types";
+
+defineProps<{ product: types.IProduct }>();
 </script>
 
 <template>
