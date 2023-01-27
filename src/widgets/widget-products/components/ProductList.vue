@@ -48,7 +48,7 @@ watch(() => props.activeFilter, getProducts, { immediate: true });
         <product-card :product="product" />
       </li>
     </ul>
-    <p>Данных нет</p>
+    <p v-else>данных нет</p>
   </app-request-container>
 </template>
 
