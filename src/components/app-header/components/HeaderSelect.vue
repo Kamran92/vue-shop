@@ -16,7 +16,7 @@ const findCity = ref("");
 const isLoading = ref(false);
 
 const isList = computed(() => !!list.value.length);
-const isFindCityMoreThreeCharacters = computed(() => findCity.value.length > 3);
+const isFindCityMoreThreeCharacters = computed(() => findCity.value.length > 2);
 const selectedValue = computed({
   get: () => props.modelValue,
   set: (value) => {
