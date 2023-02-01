@@ -7,17 +7,15 @@ import { computed, Ref, ref, watch } from "vue";
 
 const props = defineProps<{ modelValue: types.TModelValue }>();
 
-const emit = defineEmits<{
-  (e: "update:modelValue", value: types.TModelValue): void;
-}>();
+const emit = defineEmits(["update:modelValue"]);
 
 const list: Ref<types.TList> = ref([]);
 const findCity = ref("");
 const isLoading = ref(false);
 
 const isList = computed(() => !!list.value.length);
-const isFindCityMoreThreeCharacters = computed(() => findCity.value.length > 2);
-const selectedValue = computed({
+const isFindCityMoreTwoCharacters = computed(() => findCity.value.length > 2);
+const selectedCity = computed({
   get: () => props.modelValue,
   set: (value) => {
     emit("update:modelValue", value);
@@ -36,17 +34,17 @@ const getCities = async (term: string) => {
 
 const setCity = (city: types.TModelValue) => {
   findCity.value = city?.title ?? "";
-  selectedValue.value = city;
+  selectedCity.value = city;
   list.value = [];
 };
 
 const debounceGetCities = debounce(getCities);
 watch(findCity, (newValue: string) => {
-  if (!isFindCityMoreThreeCharacters.value) return;
-  if (newValue === selectedValue.value?.title) return;
+  if (!isFindCityMoreTwoCharacters.value) return;
+  if (newValue === selectedCity.value?.title) return;
 
   isLoading.value = true;
-  selectedValue.value = null;
+  selectedCity.value = null;
   debounceGetCities(newValue);
 });
 </script>
@@ -57,7 +55,7 @@ watch(findCity, (newValue: string) => {
       <input
         v-model="findCity"
         :class="{
-          'select__input--focus': isList || isFindCityMoreThreeCharacters,
+          'select__input--focus': isList || isFindCityMoreTwoCharacters,
         }"
         class="select__input"
         placeholder="Например, Санкт-петербург"
@@ -68,7 +66,7 @@ watch(findCity, (newValue: string) => {
       </button>
     </div>
     <ul
-      v-if="isFindCityMoreThreeCharacters && !selectedValue?.title"
+      v-if="isFindCityMoreTwoCharacters && !selectedCity"
       class="select__list"
     >
       <li v-if="isLoading" class="select__item">Загрузка...</li>
