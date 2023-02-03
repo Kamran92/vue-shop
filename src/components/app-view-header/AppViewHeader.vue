@@ -17,7 +17,7 @@ const getTitle = () => {
 </script>
 
 <template>
-  <router-link v-if="link" class="link" to="/">
+  <router-link v-if="link" class="link" :to="link">
     <back-icon class="link__icon" />
     <h2 class="link__title">{{ getTitle() }}</h2>
   </router-link>
