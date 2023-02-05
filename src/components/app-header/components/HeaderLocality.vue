@@ -2,16 +2,16 @@
 import closeIcon from "../icon/CrossIcon.vue";
 import HeaderSelect from "./HeaderSelect.vue";
 import useCityStore from "@/stores/cityStore";
-import { ref } from "vue";
+import { reactive } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();
 
-const findCity = ref(null);
+const data = reactive({ findCity: null });
 
 const submitForm = () => {
   const { storeAddCity } = useCityStore();
-  storeAddCity(findCity.value);
-  localStorage.setItem("city", JSON.stringify(findCity.value));
+  storeAddCity(data.findCity);
+  localStorage.setItem("city", JSON.stringify(data.findCity));
   emit("close");
 };
 </script>
@@ -21,12 +21,12 @@ const submitForm = () => {
     <div class="localities__wrap">
       <label class="localities__label">
         <span class="localities__span"> Выбор населённого пункта: </span>
-        <header-select v-model="findCity" class="localities__select" />
+        <header-select v-model="data.findCity" class="localities__select" />
       </label>
       <button
         class="localities__btn-submit"
         type="button"
-        :disabled="findCity === null"
+        :disabled="data.findCity === null"
         @click="submitForm"
       >
         Подтвердить
