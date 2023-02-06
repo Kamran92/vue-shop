@@ -4,7 +4,7 @@ import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
 import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
 import useCategories from "@/composables/useCategories";
 
-defineProps<{ widgets: Array<string> }>();
+defineProps<{ widgetSignatures: Array<string> }>();
 
 const { isLoading, isError } = useCategories();
 </script>
@@ -16,6 +16,6 @@ const { isLoading, isError } = useCategories();
     :is-error="isError"
   >
     <app-view-header link="/" />
-    <app-widgets-loader :widgets="widgets" />
+    <app-widgets-loader :widget-signatures="widgetSignatures" />
   </app-request-container>
 </template>

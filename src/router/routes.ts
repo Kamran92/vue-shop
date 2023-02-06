@@ -7,7 +7,7 @@ export default [
     name: "home",
     component: HomeView,
     props: {
-      widgets: ["WidgetCategories"],
+      widgetSignatures: ["widgetCategories"],
     },
   },
   {
@@ -15,7 +15,7 @@ export default [
     name: "category",
     component: CategoryView,
     props: {
-      widgets: ["WidgetProducts"],
+      widgetSignatures: ["widgetProducts"],
     },
   },
 ];

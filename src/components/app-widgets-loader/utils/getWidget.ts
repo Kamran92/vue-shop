@@ -2,13 +2,13 @@ import * as types from "../types";
 import addAsyncComponent from "@/utils/addAsyncComponent";
 
 const widgets: types.IWidgets = {
-  WidgetCategories: {
+  widgetCategories: {
     widgetLink: "@/widgets/WidgetCategories.vue",
     component: addAsyncComponent(
       () => import("@/widgets/WidgetCategories.vue")
     ),
   },
-  WidgetProducts: {
+  widgetProducts: {
     widgetLink: "@/widgets/widget-products/WidgetProducts.vue",
     component: addAsyncComponent(
       () => import("@/widgets/widget-products/WidgetProducts.vue")
@@ -19,4 +19,5 @@ const widgets: types.IWidgets = {
 export default (signature: string) => {
   const widget = widgets[signature];
   if (widget) return widget;
+  throw new Error(`не найден виджет для сигнатуры ${signature}`);
 };

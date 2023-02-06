@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import widgetLoader from "./utils/widgetLoader";
+import getWidget from "./utils/getWidget";
 import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
 
-defineProps<{ widgets: Array<string> }>();
+defineProps<{ widgetSignatures: Array<string> }>();
 </script>
 
 <template>
   <app-error-boundary
-    v-for="(widget, index) in widgets"
+    v-for="(signature, index) in widgetSignatures"
     :key="index"
-    :component-link="widgetLoader(widget)!.widgetLink"
+    :component-link="getWidget(signature)!.widgetLink"
   >
-    <component :is="widgetLoader(widget)!.component" class="mt-20" />
+    <component :is="getWidget(signature)!.component" class="mt-20" />
   </app-error-boundary>
 </template>
 
