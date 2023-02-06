@@ -1,9 +1,7 @@
 import routes from "./routes";
 import { createRouter, createWebHistory } from "vue-router";
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+const history = createWebHistory(process.env.BASE_URL);
+const router = createRouter({ history, routes });
 
 export default router;

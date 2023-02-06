@@ -1,17 +1,39 @@
 <script lang="ts" setup>
 import AppRequestContainer from "@/components/AppRequestContainer.vue";
-import useCategories from "@/composables/useCategories";
 import useCategoriesStore from "@/stores/categories-store/categoriesStore";
+import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
+import { reactive, watch } from "vue";
+
+const data = reactive({
+  isError: false,
+  isLoading: false,
+});
+
+const getCategories = async () => {
+  try {
+    data.isLoading = true;
+    const { storeGetCategories } = useCategoriesStore();
+    await storeGetCategories();
+  } catch (error) {
+    console.error(error);
+    data.isError = true;
+  } finally {
+    data.isLoading = false;
+  }
+};
 
 const { storeCategories } = storeToRefs(useCategoriesStore());
-const { isLoading, isError } = useCategories();
+if (storeCategories.value.length === 0) getCategories();
+
+const { storeCity } = storeToRefs(useCityStore());
+watch(storeCity, getCategories);
 </script>
 
 <template>
   <app-request-container
-    :is-loading="isLoading"
-    :is-error="isError"
+    :is-loading="data.isLoading"
+    :is-error="data.isError"
     class="container"
   >
     <article class="categories">
