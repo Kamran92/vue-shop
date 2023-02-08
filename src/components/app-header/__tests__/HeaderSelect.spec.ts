@@ -58,7 +58,7 @@ const beforeEachTest = () => {
 };
 
 describe("HeaderSelect.vue", () => {
-  it("при вводе(2 и меньше символа) города, не получаю список городов", async () => {
+  it("список городов не выводиться, при вводе 2 и меньше символа", async () => {
     axiosGet.mockResolvedValue({ data: { data: cities } });
     const wrapper = beforeEachTest();
 
@@ -68,7 +68,7 @@ describe("HeaderSelect.vue", () => {
     expect(wrapper.find(".select__list").exists()).toBe(false);
   });
 
-  it("при вводе(3 и больше символа) города, выводится список городов из 5 строк", async () => {
+  it("список городов выводится, при вводе 3 и больше символа", async () => {
     axiosGet.mockResolvedValue({ data: { data: cities } });
     const wrapper = beforeEachTest();
 
@@ -78,7 +78,7 @@ describe("HeaderSelect.vue", () => {
     expect(wrapper.findAll(".select__item")).toHaveLength(5);
   });
 
-  it("при сбросе, очищается список городов", async () => {
+  it("список городов очищается при сбросе", async () => {
     axiosGet.mockResolvedValue({ data: { data: cities } });
     const wrapper = beforeEachTest();
 
@@ -89,7 +89,7 @@ describe("HeaderSelect.vue", () => {
     expect(wrapper.find(".select__list").exists()).toBe(false);
   });
 
-  it("при клике на элемент из списка городов, скрывается список городов", async () => {
+  it("список городов скрывается, при клике на элемент из списка городов", async () => {
     axiosGet.mockResolvedValue({ data: { data: cities } });
     const wrapper = beforeEachTest();
 
@@ -100,7 +100,7 @@ describe("HeaderSelect.vue", () => {
     expect(wrapper.find(".select__list").exists()).toBe(false);
   });
 
-  it("выводиться 'Ничего не найдено...' если возвращается пустой массив", async () => {
+  it("надпись 'Ничего не найдено...' выводиться, если возвращается пустой массив", async () => {
     axiosGet.mockResolvedValue({ data: { data: [] } });
     const wrapper = beforeEachTest();
 
@@ -110,7 +110,7 @@ describe("HeaderSelect.vue", () => {
     expect(wrapper.find(".select__item").text()).toBe("Ничего не найдено...");
   });
 
-  it("выводиться 'Загрузка...' при запросе списка городов", async () => {
+  it("надпись 'Загрузка...' выводиться при запросе списка городов", async () => {
     axiosGet.mockResolvedValue({ data: { data: [] } });
     const wrapper = beforeEachTest();
 
