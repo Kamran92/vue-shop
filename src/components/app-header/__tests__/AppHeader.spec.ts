@@ -1,5 +1,5 @@
 import AppHeader from "../AppHeader.vue";
-import AppOverlay from "@/components/AppOverlay.vue";
+import AppOverlay from "@/components/app-overlay/AppOverlay.vue";
 import { shallowMount } from "@vue/test-utils";
 import * as pinia from "pinia";
 
