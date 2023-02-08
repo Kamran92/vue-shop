@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import widgets from "./widgets";
-import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
+import AppErrorBoundary from "@/components/app-error-boundary/AppErrorBoundary.vue";
 
 defineProps<{ widgetSignatures: Array<string> }>();
 
