@@ -27,13 +27,13 @@ const beforeEachTest = (props: IProps) => {
   });
 };
 describe("AppViewHeader.vue", () => {
-  it("отображается название страницы, co ссылкой", () => {
+  it("название страницы отображается co ссылкой", () => {
     const wrapper = beforeEachTest({ link: "/" });
 
     expect(wrapper.get(".link .link__title").text()).toBe("БАД");
   });
 
-  it("отображается название страницы, без ссылки", () => {
+  it("название страницы отображается без ссылки", () => {
     const wrapper = beforeEachTest({ title: "Парфюм" });
 
     expect(wrapper.get(".link__title").text()).toBe("Парфюм");
