@@ -9,9 +9,9 @@ defineProps<{ widgetSignatures: Array<string> }>();
   <app-error-boundary
     v-for="(signature, index) in widgetSignatures"
     :key="index"
-    :component-link="getWidget(signature)!.widgetLink"
+    :component-link="getWidget(signature).widgetLink"
   >
-    <component :is="getWidget(signature)!.component" class="mt-20" />
+    <component :is="getWidget(signature).component" class="mt-20" />
   </app-error-boundary>
 </template>
 
