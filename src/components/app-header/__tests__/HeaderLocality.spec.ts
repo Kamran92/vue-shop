@@ -7,7 +7,7 @@ jest.mock("@/stores/cityStore", () => () => {
 });
 
 describe("HeaderLocality.vue", () => {
-  it("если город не выбран, нельзя сохранить", () => {
+  it("нельзя сохранить, если город не выбран", () => {
     jest.spyOn(vue, "reactive").mockReturnValue({ findCity: null });
     const wrapper = shallowMount(HeaderLocality);
 
@@ -15,7 +15,7 @@ describe("HeaderLocality.vue", () => {
     expect(submitBtn.attributes().disabled).toBeDefined();
   });
 
-  it("если город выбран, можно сохранить", () => {
+  it("можно сохранить, если город выбран", () => {
     jest.spyOn(vue, "reactive").mockReturnValue({ findCity: {} });
     const wrapper = shallowMount(HeaderLocality);
 
@@ -33,7 +33,7 @@ describe("HeaderLocality.vue", () => {
     expect(setItem).toHaveBeenCalledWith("city", JSON.stringify(findCity));
   });
 
-  it("после сохранения сворачивается поиск городов", async () => {
+  it("поиск городов сворачивается после сохранения", async () => {
     jest.spyOn(vue, "reactive").mockReturnValue({ findCity: {} });
     const wrapper = shallowMount(HeaderLocality);
 
@@ -42,7 +42,7 @@ describe("HeaderLocality.vue", () => {
     expect(wrapper.emitted("close")).toHaveLength(1);
   });
 
-  it("при закрытии сворачивается поиск городов", async () => {
+  it("поиск городов сворачивается при закрытии", async () => {
     const wrapper = shallowMount(HeaderLocality);
 
     await wrapper.get(".localities__btn-close").trigger("click");
