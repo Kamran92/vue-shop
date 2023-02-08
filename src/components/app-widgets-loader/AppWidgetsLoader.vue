@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import getWidget from "./utils/getWidget";
+import widgets from "./widgets";
 import AppErrorBoundary from "@/components/AppErrorBoundary.vue";
 
 defineProps<{ widgetSignatures: Array<string> }>();
+
+const getWidget = (signature: string) => {
+  const widget = widgets[signature];
+  if (widget) return widget;
+  throw new Error(`не найден виджет для сигнатуры ${signature}`);
+};
 </script>
 
 <template>

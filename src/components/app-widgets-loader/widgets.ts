@@ -1,7 +1,14 @@
-import * as types from "../types";
 import addAsyncComponent from "@/utils/addAsyncComponent";
+import { AsyncComponentLoader } from "vue";
 
-const widgets: types.IWidgets = {
+interface IWidgets {
+  [key: string]: {
+    widgetLink: string;
+    component: AsyncComponentLoader;
+  };
+}
+
+const widgets: IWidgets = {
   widgetCategories: {
     widgetLink: "@/widgets/WidgetCategories.vue",
     component: addAsyncComponent(
@@ -16,8 +23,4 @@ const widgets: types.IWidgets = {
   },
 };
 
-export default (signature: string) => {
-  const widget = widgets[signature];
-  if (widget) return widget;
-  throw new Error(`не найден виджет для сигнатуры ${signature}`);
-};
+export default widgets;
