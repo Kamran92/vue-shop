@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
 import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
 import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
 import useCategoriesStore from "@/stores/categories-store/categoriesStore";

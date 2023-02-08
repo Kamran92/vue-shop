@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
 import useCategoriesStore from "@/stores/categories-store/categoriesStore";
 import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";

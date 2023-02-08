@@ -2,7 +2,7 @@
 import * as api from "../api";
 import * as types from "../types";
 import ProductCard from "./ProductCard.vue";
-import AppRequestContainer from "@/components/AppRequestContainer.vue";
+import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
 import useCityStore from "@/stores/cityStore";
 import { storeToRefs } from "pinia";
 import { Ref, ref, watch } from "vue";
