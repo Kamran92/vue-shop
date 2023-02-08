@@ -45,7 +45,14 @@ watch(() => props.activeFilter, getProducts, { immediate: true });
   <app-request-container :is-loading="isLoading" :is-error="isError">
     <ul v-if="products.length" class="list">
       <li v-for="(product, index) in products" :key="index" class="list__item">
-        <product-card :product="product" />
+        <product-card
+          :link-img="product.main_image_thumb_300"
+          :category-name="product.category?.name"
+          :present-name="product.present_name"
+          :comment-name="product.comment_name"
+          :price="product.price"
+          :is-buy="product.allowed && product.available"
+        />
       </li>
     </ul>
     <p v-else>данных нет</p>

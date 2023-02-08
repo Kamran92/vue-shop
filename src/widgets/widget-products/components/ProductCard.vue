@@ -1,35 +1,28 @@
 <script setup lang="ts">
-import * as types from "../types";
-
-defineProps<{ product: types.IProduct }>();
+defineProps({
+  linkImg: { type: String, required: true },
+  categoryName: { type: String, default: () => "" },
+  presentName: { type: String, default: () => "" },
+  commentName: { type: String, default: () => "" },
+  price: { type: String, required: true },
+  isBuy: { type: Boolean, required: true },
+});
 </script>
 
 <template>
   <section class="cart">
     <img
-      v-if="product.main_image_thumb_300"
       class="cart__img"
-      :src="product.main_image_thumb_300"
-      :alt="product.present_name"
+      :src="linkImg"
+      :alt="presentName"
       width="276"
       height="276"
     />
-    <div v-if="product.category?.name" class="cart__category">
-      {{ product.category.name }}
-    </div>
-    <div v-if="product.present_name" class="cart__title">
-      {{ product.present_name }}
-    </div>
-    <div v-if="product.comment_name" class="cart__description">
-      {{ product.comment_name }}
-    </div>
-    <div class="cart__price">{{ product.price }} ₽</div>
-    <button
-      v-if="product.allowed && product.available"
-      class="cart__btn cart__btn--add"
-    >
-      В корзину
-    </button>
+    <div v-if="categoryName" class="cart__category">{{ categoryName }}</div>
+    <div v-if="presentName" class="cart__title">{{ presentName }}</div>
+    <div v-if="commentName" class="cart__description">{{ commentName }}</div>
+    <div class="cart__price">{{ price }} ₽</div>
+    <button v-if="isBuy" class="cart__btn cart__btn--add">В корзину</button>
     <button v-else class="cart__btn cart__btn--empty">Нет в наличии</button>
   </section>
 </template>
