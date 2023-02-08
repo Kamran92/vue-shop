@@ -13,14 +13,14 @@ const beforeEachTest = () => {
 };
 
 describe("AppHeader.vue", () => {
-  it("отображается название города", () => {
+  it("название города отображается", () => {
     const wrapper = beforeEachTest();
     const headerTitle = wrapper.get(".header__title");
 
     expect(headerTitle.text()).toBe("Москва");
   });
 
-  it("при клике отображается поиск городов", async () => {
+  it("поиск городов отображается", async () => {
     const wrapper = beforeEachTest();
     await wrapper.get(".header__btn").trigger("click");
 
