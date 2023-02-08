@@ -9,9 +9,8 @@ describe("AppOverlay.vue", () => {
   });
 
   it("скроллбар браузера показывается", async () => {
-    const wrapper = shallowMount(AppOverlay);
+    shallowMount(AppOverlay).unmount();
 
-    wrapper.unmount();
     expect(document.body.className).toBe("");
   });
 });
