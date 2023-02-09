@@ -4,7 +4,7 @@ defineProps({
   categoryName: { type: String, default: () => "" },
   presentName: { type: String, default: () => "" },
   commentName: { type: String, default: () => "" },
-  price: { type: String, required: true },
+  price: { type: Number, required: true },
   isBuy: { type: Boolean, required: true },
 });
 </script>
