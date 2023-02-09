@@ -10,12 +10,7 @@ export default defineStore("categories", () => {
   const storeCategories: Ref<types.TCategories> = ref([]);
 
   const storeGetCategories = async () => {
-    try {
-      storeCategories.value = await api.getCategories(storeCity.value.id);
-    } catch (error) {
-      console.log(error);
-      throw new Error();
-    }
+    storeCategories.value = await api.getCategories(storeCity.value.id);
   };
 
   const storeGetCategoryBySlug = (slug: string) => {
