@@ -14,38 +14,32 @@ const activeFilter = computed({
     emit("update:modelValue", value);
   },
 });
-
-const getFilters = () => {
+const filters = computed(() => {
   const { categorySlug } = useRoute().params;
   if (typeof categorySlug !== "string") return [];
   const { storeGetCategoryBySlug } = useCategoriesStore();
   const category = storeGetCategoryBySlug(categorySlug);
   const children = category?.children;
   return children ? [FILTER_SLUG_ALL, ...children] : [];
-};
-
-const setActiveFilter = (slug: string) => {
-  activeFilter.value = slug;
-};
-
-const isShowFilters = () => {
+});
+const isShowFilters = computed(() => {
   const NUMBER_FILTERS = 2;
-  return getFilters().length > NUMBER_FILTERS;
-};
+  return filters.value.length > NUMBER_FILTERS;
+});
 
-if (isShowFilters()) {
-  setActiveFilter(FILTER_SLUG_ALL.slug);
+if (isShowFilters.value) {
+  activeFilter.value = FILTER_SLUG_ALL.slug;
 }
 </script>
 
 <template>
-  <ul v-if="isShowFilters()" class="list">
+  <ul v-if="isShowFilters" class="list">
     <li
-      v-for="({ name, slug }, index) in getFilters()"
+      v-for="({ name, slug }, index) in filters"
       :key="index"
       :class="{ 'list__item--active': activeFilter === slug }"
       class="list__item"
-      @click="setActiveFilter(slug)"
+      @click="activeFilter = slug"
     >
       {{ name }}
     </li>
