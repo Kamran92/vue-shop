@@ -1,6 +1,6 @@
 import * as api from "./api";
 import * as types from "./types";
-import useCityStore from "@/stores/cityStore";
+import useCityStore from "@/stores/city-store/cityStore";
 import { defineStore, storeToRefs } from "pinia";
 import { Ref, ref } from "vue";
 
