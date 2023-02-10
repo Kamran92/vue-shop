@@ -2,7 +2,7 @@ import HeaderLocality from "../components/HeaderLocality.vue";
 import { shallowMount } from "@vue/test-utils";
 import * as vue from "vue";
 
-jest.mock("@/stores/cityStore", () => () => {
+jest.mock("@/stores/city-store/cityStore", () => () => {
   return { storeAddCity: () => "" };
 });
 
