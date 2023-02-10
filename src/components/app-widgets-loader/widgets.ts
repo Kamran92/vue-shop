@@ -12,7 +12,7 @@ const widgets: IWidgets = {
   widgetCategories: {
     widgetLink: "@/widgets/WidgetCategories.vue",
     component: addAsyncComponent(
-      () => import("@/widgets/WidgetCategories.vue")
+      () => import("@/widgets/widget-categories/WidgetCategories.vue")
     ),
   },
   widgetProducts: {
