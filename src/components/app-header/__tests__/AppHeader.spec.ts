@@ -3,7 +3,7 @@ import AppOverlay from "@/components/app-overlay/AppOverlay.vue";
 import { shallowMount } from "@vue/test-utils";
 import * as pinia from "pinia";
 
-jest.mock("@/stores/cityStore", () => () => "");
+jest.mock("@/stores/city-store/cityStore", () => () => "");
 jest.mock("pinia");
 
 const beforeEachTest = () => {
