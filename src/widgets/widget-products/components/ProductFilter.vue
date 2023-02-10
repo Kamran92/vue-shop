@@ -23,8 +23,8 @@ const filters = computed(() => {
   return children ? [FILTER_SLUG_ALL, ...children] : [];
 });
 const isShowFilters = computed(() => {
-  const NUMBER_FILTERS = 2;
-  return filters.value.length > NUMBER_FILTERS;
+  const NUMBER_FILTERS = 3;
+  return filters.value.length >= NUMBER_FILTERS;
 });
 
 if (isShowFilters.value) {
