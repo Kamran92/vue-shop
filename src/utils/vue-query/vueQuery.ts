@@ -1,8 +1,11 @@
-import * as types from "./types";
 import axios from "@/plugins/axios";
 
 const vueQuery = (timeout = 10000) => {
-  const requests: types.IRequests = {};
+  interface IRequests {
+    [index: string]: unknown;
+  }
+
+  const requests: IRequests = {};
 
   interface ILoadings {
     [index: string]: boolean;

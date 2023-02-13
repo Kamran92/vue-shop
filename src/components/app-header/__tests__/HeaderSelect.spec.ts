@@ -1,5 +1,4 @@
 import HeaderSelect from "../components/HeaderSelect.vue";
-import * as types from "../types";
 import axios from "@/plugins/axios";
 import { shallowMount, flushPromises } from "@vue/test-utils";
 
@@ -48,8 +47,8 @@ const beforeEachTest = () => {
   const wrapper = shallowMount(HeaderSelect, {
     props: {
       modelValue: null,
-      "onUpdate:modelValue": (e: types.TModelValue) => {
-        return wrapper.setProps({ modelValue: e });
+      "onUpdate:modelValue": (e: unknown) => {
+        wrapper.setProps({ modelValue: e });
       },
     },
   });
