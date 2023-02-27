@@ -54,7 +54,7 @@ watch(findCity, (newValue: string) => {
   <div class="select">
     <div class="select__wrap">
       <input
-        v-model="findCity"
+        v-model.trim="findCity"
         :class="{
           'select__input--focus': isList || isFindCityMoreTwoCharacters,
         }"
