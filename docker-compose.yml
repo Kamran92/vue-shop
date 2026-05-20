@@ -1,7 +1,7 @@
 version: "3"
 services:
   frontend:
-    image: node:14.21.2
+    image: node:23.7.0
     ports:
       - "8080:8080"
     volumes:
