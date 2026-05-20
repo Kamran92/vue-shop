@@ -1,7 +1,7 @@
 import AppWidgetsLoader from "../AppWidgetsLoader.vue";
 import { shallowMount } from "@vue/test-utils";
 
-jest.mock("../widgets", () => {
+jest.mock("@/app/providers/widgets", () => {
   return {
     a: { widgetLink: "@/a" },
     b: { widgetLink: "@/b" },
