@@ -1,7 +1,7 @@
-import ProductCard from "../components/ProductCard.vue";
+import ProductCard from "../ProductCard.vue";
 import { shallowMount } from "@vue/test-utils";
 
-describe("cityStore", () => {
+describe("ProductCard", () => {
   it("кнопка 'В корзину' отображается", async () => {
     const props = {
       linkImg: "https://183930.selcdn.ru/media.png",

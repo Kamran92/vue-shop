@@ -1,4 +1,4 @@
-import ProductFilter from "../components/ProductFilter.vue";
+import ProductFilter from "../ProductFilter.vue";
 import useCategoriesStore from "@/stores/categories-store/categoriesStore";
 import { shallowMount } from "@vue/test-utils";
 import { setActivePinia, createPinia } from "pinia";

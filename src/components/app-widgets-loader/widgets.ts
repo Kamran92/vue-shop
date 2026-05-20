@@ -10,15 +10,15 @@ interface IWidgets {
 
 const widgets: IWidgets = {
   widgetCategories: {
-    widgetLink: "@/widgets/WidgetCategories.vue",
+    widgetLink: "@/widgets/categories/ui/CategoriesWidget.vue",
     component: addAsyncComponent(
-      () => import("@/widgets/widget-categories/WidgetCategories.vue")
+      () => import("@/widgets/categories/ui/CategoriesWidget.vue")
     ),
   },
   widgetProducts: {
-    widgetLink: "@/widgets/widget-products/WidgetProducts.vue",
+    widgetLink: "@/widgets/products/ui/ProductsWidget.vue",
     component: addAsyncComponent(
-      () => import("@/widgets/widget-products/WidgetProducts.vue")
+      () => import("@/widgets/products/ui/ProductsWidget.vue")
     ),
   },
 };

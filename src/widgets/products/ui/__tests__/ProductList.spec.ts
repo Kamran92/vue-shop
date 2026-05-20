@@ -1,4 +1,4 @@
-import ProductList from "../components/ProductList.vue";
+import ProductList from "../ProductList.vue";
 import { shallowMount } from "@vue/test-utils";
 
 describe("ProductList", () => {
