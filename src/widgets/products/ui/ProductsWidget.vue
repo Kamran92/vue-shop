@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import * as api from "../api";
-import ProductList from "./ProductList.vue";
 import useCityStore from "@/entities/city/model/cityStore";
+import ProductList from "@/entities/product/ui/ProductList.vue";
 import ProductFilter from "@/features/product-filter/ui/ProductFilter.vue";
 import AppRequestContainer from "@/shared/ui/app-request-container/AppRequestContainer.vue";
 import { storeToRefs } from "pinia";
