@@ -1,5 +1,5 @@
-import CategoryView from "@/views/CategoryView.vue";
-import HomeView from "@/views/HomeView.vue";
+import CategoryView from "@/pages/category/ui/CategoryView.vue";
+import HomeView from "@/pages/home/ui/HomeView.vue";
 
 export default [
   {
