@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import LocationIcon from "./icon/LocationIcon.vue";
-import AppOverlay from "@/components/app-overlay/AppOverlay.vue";
 import useCityStore from "@/entities/city/model/cityStore";
 import HeaderLocality from "@/features/header-locality/ui/HeaderLocality.vue";
+import AppOverlay from "@/shared/ui/app-overlay/AppOverlay.vue";
 import { storeToRefs } from "pinia";
 import { ref } from "vue";
 

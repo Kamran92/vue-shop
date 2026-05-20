@@ -1,4 +1,4 @@
-import addAsyncComponent from "@/utils/addAsyncComponent";
+import addAsyncComponent from "@/shared/lib/addAsyncComponent";
 import { AsyncComponentLoader } from "vue";
 
 interface IWidgets {

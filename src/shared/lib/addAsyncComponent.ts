@@ -1,5 +1,5 @@
-import AppError from "@/components/AppError.vue";
-import AppLoading from "@/components/AppLoading.vue";
+import AppError from "@/shared/ui/AppError.vue";
+import AppLoading from "@/shared/ui/AppLoading.vue";
 import { AsyncComponentLoader, defineAsyncComponent } from "vue";
 
 export default (

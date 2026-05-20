@@ -1,11 +1,11 @@
 import HeaderSelect from "../ui/HeaderSelect.vue";
-import axios from "@/plugins/axios";
+import axios from "@/shared/api/axios";
 import { shallowMount, flushPromises } from "@vue/test-utils";
 
-jest.mock("@/plugins/axios");
+jest.mock("@/shared/api/axios");
 const axiosGet = axios.get as jest.Mock;
 
-jest.mock("@/utils/debounce", () => {
+jest.mock("@/shared/lib/debounce", () => {
   type TCallback = (value: unknown) => void;
 
   return (callback: TCallback) => (value: unknown) => callback(value);

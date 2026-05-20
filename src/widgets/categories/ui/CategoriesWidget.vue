@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
 import useCategoriesStore from "@/entities/category/model/categoriesStore";
 import useCityStore from "@/entities/city/model/cityStore";
+import AppRequestContainer from "@/shared/ui/app-request-container/AppRequestContainer.vue";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";
 

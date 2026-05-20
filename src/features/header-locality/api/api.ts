@@ -1,4 +1,4 @@
-import axios from "@/plugins/axios";
+import axios from "@/shared/api/axios";
 
 export const getCities = async (term: string) => {
   const params = { country: "ru", term };

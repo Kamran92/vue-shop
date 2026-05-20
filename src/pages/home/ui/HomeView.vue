@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
-import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
+import AppViewHeader from "@/shared/ui/app-view-header/AppViewHeader.vue";
+import AppWidgetsLoader from "@/shared/ui/app-widgets-loader/AppWidgetsLoader.vue";
 
 defineProps<{ widgetSignatures: Array<string> }>();
 </script>

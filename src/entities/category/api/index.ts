@@ -1,4 +1,4 @@
-import axios from "@/plugins/axios";
+import axios from "@/shared/api/axios";
 
 export const getCategories = async (cityId: string) => {
   const URL = "/ru/api/catalog3/v1/menutags/";

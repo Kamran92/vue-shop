@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
-import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
-import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
 import useCategoriesStore from "@/entities/category/model/categoriesStore";
 import useCityStore from "@/entities/city/model/cityStore";
+import AppRequestContainer from "@/shared/ui/app-request-container/AppRequestContainer.vue";
+import AppViewHeader from "@/shared/ui/app-view-header/AppViewHeader.vue";
+import AppWidgetsLoader from "@/shared/ui/app-widgets-loader/AppWidgetsLoader.vue";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";
 
