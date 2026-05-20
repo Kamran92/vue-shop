@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import useCategoriesStore from "@/stores/categories-store/categoriesStore";
+import useCategoriesStore from "@/entities/category/model/categoriesStore";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 

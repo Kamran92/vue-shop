@@ -1,5 +1,5 @@
 import ProductFilter from "../ProductFilter.vue";
-import useCategoriesStore from "@/stores/categories-store/categoriesStore";
+import useCategoriesStore from "@/entities/category/model/categoriesStore";
 import { shallowMount } from "@vue/test-utils";
 import { setActivePinia, createPinia } from "pinia";
 import { nextTick } from "vue";

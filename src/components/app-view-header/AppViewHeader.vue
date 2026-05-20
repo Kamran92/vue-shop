@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BackIcon from "./icons/BackIcon.vue";
-import useCategoriesStore from "@/stores/categories-store/categoriesStore";
+import useCategoriesStore from "@/entities/category/model/categoriesStore";
 import { useRoute } from "vue-router";
 
 defineProps<{

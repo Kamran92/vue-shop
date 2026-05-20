@@ -1,4 +1,4 @@
-import categoriesStore from "../categoriesStore";
+import categoriesStore from "../model/categoriesStore";
 import { setActivePinia, createPinia } from "pinia";
 
 jest.mock("../api", () => {

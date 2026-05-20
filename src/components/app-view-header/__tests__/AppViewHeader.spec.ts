@@ -5,7 +5,7 @@ jest.mock("vue-router", () => ({
   useRoute: () => ({ params: { categorySlug: "bad" } }),
 }));
 
-jest.mock("@/stores/categories-store/categoriesStore", () => {
+jest.mock("@/entities/category/model/categoriesStore", () => {
   return () => ({
     storeGetCategoryBySlug: (slug: "bad") => {
       const category = { bad: { name: "БАД" } };

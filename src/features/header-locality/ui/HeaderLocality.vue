@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import closeIcon from "./CrossIcon.vue";
 import HeaderSelect from "./HeaderSelect.vue";
-import useCityStore from "@/stores/city-store/cityStore";
+import useCityStore from "@/entities/city/model/cityStore";
 import { reactive } from "vue";
 
 const emit = defineEmits<{ (e: "close"): void }>();

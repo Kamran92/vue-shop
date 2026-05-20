@@ -2,8 +2,8 @@
 import * as api from "../api/productsApi";
 import ProductList from "./ProductList.vue";
 import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
+import useCityStore from "@/entities/city/model/cityStore";
 import ProductFilter from "@/features/product-filter/ui/ProductFilter.vue";
-import useCityStore from "@/stores/city-store/cityStore";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";
 import { useRoute } from "vue-router";

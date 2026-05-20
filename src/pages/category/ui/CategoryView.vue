@@ -2,8 +2,8 @@
 import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
 import AppViewHeader from "@/components/app-view-header/AppViewHeader.vue";
 import AppWidgetsLoader from "@/components/app-widgets-loader/AppWidgetsLoader.vue";
-import useCategoriesStore from "@/stores/categories-store/categoriesStore";
-import useCityStore from "@/stores/city-store/cityStore";
+import useCategoriesStore from "@/entities/category/model/categoriesStore";
+import useCityStore from "@/entities/city/model/cityStore";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";
 
