@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import * as api from "../api/productsApi";
+import * as api from "../api";
 import ProductList from "./ProductList.vue";
-import AppRequestContainer from "@/shared/ui/app-request-container/AppRequestContainer.vue";
 import useCityStore from "@/entities/city/model/cityStore";
 import ProductFilter from "@/features/product-filter/ui/ProductFilter.vue";
+import AppRequestContainer from "@/shared/ui/app-request-container/AppRequestContainer.vue";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";
 import { useRoute } from "vue-router";

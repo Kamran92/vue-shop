@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import * as api from "../api/api";
+import * as api from "../api";
 import crossIcon from "./CrossIcon.vue";
 import debounce from "@/shared/lib/debounce";
 import { computed, Ref, ref, watch } from "vue";
