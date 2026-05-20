@@ -1,4 +1,4 @@
-import HeaderSelect from "../components/HeaderSelect.vue";
+import HeaderSelect from "../ui/HeaderSelect.vue";
 import axios from "@/plugins/axios";
 import { shallowMount, flushPromises } from "@vue/test-utils";
 

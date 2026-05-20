@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import closeIcon from "../icon/CrossIcon.vue";
+import closeIcon from "./CrossIcon.vue";
 import HeaderSelect from "./HeaderSelect.vue";
 import useCityStore from "@/stores/city-store/cityStore";
 import { reactive } from "vue";

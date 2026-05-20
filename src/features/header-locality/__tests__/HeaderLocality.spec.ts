@@ -1,4 +1,4 @@
-import HeaderLocality from "../components/HeaderLocality.vue";
+import HeaderLocality from "../ui/HeaderLocality.vue";
 import { shallowMount } from "@vue/test-utils";
 import * as vue from "vue";
 

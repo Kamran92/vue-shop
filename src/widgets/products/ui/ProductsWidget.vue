@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import * as api from "../api/productsApi";
-import ProductFilter from "./ProductFilter.vue";
 import ProductList from "./ProductList.vue";
 import AppRequestContainer from "@/components/app-request-container/AppRequestContainer.vue";
+import ProductFilter from "@/features/product-filter/ui/ProductFilter.vue";
 import useCityStore from "@/stores/city-store/cityStore";
 import { storeToRefs } from "pinia";
 import { reactive, watch } from "vue";

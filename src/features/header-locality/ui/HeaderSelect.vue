@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import * as api from "../api";
-import crossIcon from "../icon/CrossIcon.vue";
+import * as api from "../api/api";
+import crossIcon from "./CrossIcon.vue";
 import debounce from "@/utils/debounce";
 import { computed, Ref, ref, watch } from "vue";
 
