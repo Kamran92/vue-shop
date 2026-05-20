@@ -18,7 +18,8 @@ const getCategories = async () => {
   try {
     data.isLoading = true;
     const { storeGetCategories } = useCategoriesStore();
-    await storeGetCategories();
+    const { storeCity } = storeToRefs(useCityStore());
+    await storeGetCategories(storeCity.value.id);
   } catch (error) {
     console.error(error);
     data.isError = true;

@@ -1,6 +1,5 @@
 import * as api from "../api";
-import useCityStore from "@/entities/city/model/cityStore";
-import { defineStore, storeToRefs } from "pinia";
+import { defineStore } from "pinia";
 import { Ref, ref } from "vue";
 
 export default defineStore("categories", () => {
@@ -12,12 +11,10 @@ export default defineStore("categories", () => {
     children: Array<{ name: string; slug: string }>;
   }>;
 
-  const { storeCity } = storeToRefs(useCityStore());
-
   const storeCategories: Ref<TCategories> = ref([]);
 
-  const storeGetCategories = async () => {
-    storeCategories.value = await api.getCategories(storeCity.value.id);
+  const storeGetCategories = async (cityId: string) => {
+    storeCategories.value = await api.getCategories(cityId);
   };
 
   const storeGetCategoryBySlug = (slug: string) => {

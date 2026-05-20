@@ -16,7 +16,7 @@ describe("categoriesStore", () => {
   it("категорию получаю по slug", async () => {
     setActivePinia(createPinia());
     const { storeGetCategories, storeGetCategoryBySlug } = categoriesStore();
-    await storeGetCategories();
+    await storeGetCategories("1");
     expect(storeGetCategoryBySlug("b")).toEqual({ name: "b", slug: "b" });
   });
 });
